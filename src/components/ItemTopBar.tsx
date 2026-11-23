@@ -26,7 +26,7 @@ export default function ItemTopBar() {
       <Link href="/" aria-label="Del Pedregal, inicio" className="shrink-0">
         {/* White version over the photo on phones; the original blue on the light desktop bar. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/image_bottles/logo-delpedregal.png" alt="Del Pedregal" className="h-14 w-auto brightness-0 invert drop-shadow md:brightness-100 md:invert-0 md:drop-shadow-none" />
+        <img src="/image_bottles/logo-delpedregal.png" alt="Del Pedregal" className="h-[4.375rem] w-auto brightness-0 invert drop-shadow md:brightness-100 md:invert-0 md:drop-shadow-none" />
       </Link>
       <div className={pill}>
         <button

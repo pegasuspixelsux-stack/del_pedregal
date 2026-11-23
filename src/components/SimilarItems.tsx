@@ -57,32 +57,31 @@ export default function SimilarItems({ title, items, embedded = false }: { title
       >
         {items.map((item) => (
           <li key={item.id} className={`snap-start shrink-0 ${embedded ? 'w-[40%] sm:w-[28%] md:w-[19%] lg:w-[15%]' : 'w-[60%] sm:w-[40%] md:w-[28%] lg:w-[22%]'}`}>
-            <Link href={`/productos/${item.id}`} className="group relative block aspect-square rounded-2xl overflow-hidden bg-[#E5E5EA]">
+            <Link href={`/productos/${item.id}`} className="group relative block aspect-square rounded-2xl overflow-hidden bg-white border border-[#000000]/5">
               <PropertyImage
                 src={item.image}
                 alt={item.title}
                 variant="card"
                 sizes={embedded ? "(min-width: 1024px) 15vw, (min-width: 768px) 19vw, (min-width: 640px) 28vw, 40vw" : "(min-width: 1024px) 22vw, (min-width: 768px) 28vw, 60vw"}
-                className={`object-cover transition-transform duration-500 group-hover:scale-105 ${item.inStock ? '' : 'opacity-50 grayscale'}`}
+                className={`object-contain px-4 pt-8 pb-20 md:px-6 md:pt-10 md:pb-24 transition-transform duration-500 group-hover:scale-105 ${item.inStock ? '' : 'opacity-50 grayscale'}`}
               />
-              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               {!item.inStock && (
                 <span className="absolute top-3 left-3 bg-black/80 text-white text-[10px] font-semibold px-2.5 py-1 rounded-full">Sin stock</span>
               )}
               <FavoriteButton productId={item.id} title={item.title} className="absolute top-3 right-3 z-10 w-8 h-8" />
               {/* Text inside the card, over the photo */}
-              <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 text-white">
+              <div className="absolute inset-x-0 bottom-0 p-3 md:p-4 text-black">
                 <h3 className="text-base md:text-lg font-semibold tracking-tight leading-tight line-clamp-2">{item.title}</h3>
                 <p className="mt-1.5 text-xs md:text-sm flex flex-wrap items-end justify-between gap-x-2">
-                  <span className="text-white/80 truncate">{item.quantity}</span>
+                  <span className="text-black/70 truncate">{item.quantity}</span>
                   <span className="max-w-full flex items-baseline gap-1.5">
                     {(() => {
                       const now = splitPrice(item.salePrice ?? item.price);
                       return (
                         <>
-                          {now.unit && <span className="text-[10px] md:text-xs font-semibold text-white/80">{now.unit}</span>}
+                          {now.unit && <span className="text-[10px] md:text-xs font-semibold text-black/70">{now.unit}</span>}
                           <span className="text-base md:text-lg font-extrabold tracking-tight">{now.amount}</span>
-                          {item.salePrice && <s className="text-[11px] font-normal text-white/60">{splitPrice(item.price).amount}</s>}
+                          {item.salePrice && <s className="text-[11px] font-normal text-black/50">{splitPrice(item.price).amount}</s>}
                         </>
                       );
                     })()}
