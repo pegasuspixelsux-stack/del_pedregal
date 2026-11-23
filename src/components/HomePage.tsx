@@ -1,13 +1,13 @@
 'use client';
 
 import { Suspense, useState, useMemo, useEffect, useCallback } from 'react';
+import Link from 'next/link';
 import type { HomeProperty } from '@/src/lib/homeData';
 import SiteFooter from '@/src/components/SiteFooter';
 import InfoSections from '@/src/components/InfoSections';
 import CatalogSection from '@/src/components/CatalogSection';
 import CartButton from '@/src/components/CartButton';
 import WholesaleAccess from '@/src/components/WholesaleAccess';
-import SiteNavLinks from '@/src/components/SiteNavLinks';
 import MobileNavMenu from '@/src/components/MobileNavMenu';
 import SearchModal from '@/src/components/SearchModal';
 import { Search } from 'lucide-react';
@@ -15,7 +15,6 @@ import { typeLabels } from '@/src/utils/format';
 import { useClient } from '@/src/context/ClientContext';
 import { applyBoxFirst, applyLevel } from '@/src/utils/pricing';
 import HomeAccessButton from '@/src/components/HomeAccessButton';
-import BrandName from '@/src/components/BrandName';
 import { useBusiness } from '@/src/context/BusinessContext';
 
 
@@ -94,13 +93,20 @@ export default function FrescoHome({
       <SearchModal open={searchOpen} onClose={closeSearch} categories={categories} initialQuery="" />
 
       {/* --- NAVIGATION --- */}
-      <header className="hidden md:block sticky top-0 z-50 bg-[#FBFBFD]/80 backdrop-blur-md">
+      <header
+        className={`nav-on-blue hidden md:block fixed inset-x-0 top-0 z-50 text-white backdrop-blur-md transition-[background-color] duration-300 ${
+          scrolled ? 'bg-[color-mix(in_srgb,#1e3a8a_80%,transparent)]' : 'bg-transparent'
+        }`}
+      >
         <div className="bg-[#1e3a8a] text-white text-center text-[11px] sm:text-xs font-medium tracking-wide py-1.5 px-4 sm:px-6 leading-snug">
           <span>Entregas diarias en Maldonado y Punta del Este</span>
         </div>
-        <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
-          <span className="font-semibold text-sm min-[420px]:text-base sm:text-lg tracking-tight"><BrandName /></span>
-          <SiteNavLinks />
+        <div className="max-w-[1440px] mx-auto px-6 min-h-16 flex items-center justify-between">
+          {/* Logo on the left (white version of the blue artwork) */}
+          <Link href="/" aria-label="Del Pedregal, inicio" className="justify-self-start">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/image_bottles/logo-nav.webp" alt="Del Pedregal" width={503} height={232} className="h-16 w-auto brightness-0 invert drop-shadow" />
+          </Link>
           <div className="flex items-center gap-1">
           <button
             type="button"
@@ -113,26 +119,55 @@ export default function FrescoHome({
           </button>
           <WholesaleAccess />
           <CartButton />
-          <MobileNavMenu />
           </div>
         </div>
       </header>
 
-      <div className="max-w-[1440px] mx-auto px-0 md:px-6 pt-0 md:pt-4">
-        <section data-home-hero className="relative w-full h-screen h-[100svh] flex flex-col items-center justify-start max-md:rounded-none overflow-hidden rounded-3xl border-0 bg-[radial-gradient(circle_at_50%_40%,#3b82f6_0%,#1d4ed8_45%,#1e3a8a_100%)] text-white">
+      <div className="max-w-[1440px] mx-auto px-0 md:max-w-none md:px-0 md:pt-0">
+        <section data-home-hero className="relative w-full h-screen h-[100svh] md:h-screen flex flex-col items-center justify-start max-md:rounded-none md:rounded-none overflow-hidden rounded-3xl border-0 bg-[radial-gradient(circle_at_50%_40%,#3b82f6_0%,#1d4ed8_45%,#1e3a8a_100%)] text-white">
           {/* Bottom shade: deeper blue toward the bottom edge */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#172554] to-transparent" />
-          {/* Logo, bottles and supporting text: one centered column that fits between the top bar and the bottom nav
-              (padding reserves their height), the bottles taking whatever space is left, so nothing overlaps on any phone or tablet. */}
-          <div className="relative w-full h-full flex flex-col items-center gap-3 px-5 text-center pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[calc(8rem+env(safe-area-inset-bottom))] md:gap-4 md:pt-8 md:pb-8">
-            <h1 className="shrink-0">
-              {/* White version of the blue logo artwork */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-delpedregal.png" alt="Del Pedregal" fetchPriority="high" decoding="async" className="mx-auto h-auto w-[min(45vw,183px)] md:w-[min(22vw,260px)] brightness-0 invert drop-shadow-lg" />
-            </h1>
+          {/* Phones: one centered column (logo, bottles, text) that fits between the top bar and the bottom nav; the bottles take
+              whatever space is left, so nothing overlaps. Tablet and desktop: two columns, the text block on the left and the
+              bottles on the right. */}
+          <div className="relative w-full h-full flex flex-col items-center gap-3 px-5 text-center pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[calc(8rem+env(safe-area-inset-bottom))] md:flex-row md:justify-between md:gap-10 md:px-12 lg:px-24 md:text-left md:pt-[8rem] md:pb-8">
+            <h1 className="sr-only md:hidden">Del Pedregal Acceso Mayorista</h1>
+            {/* Phones: white version of the blue logo artwork */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Dosbidones-tapa-azul.png" fetchPriority="high" decoding="async" alt="" aria-hidden="true" className="pointer-events-none -mt-8 md:-mt-12 min-h-0 flex-1 w-full max-w-[90%] max-h-[60svh] object-contain drop-shadow-2xl" />
-            <p className="shrink-0 max-w-[17rem] md:max-w-md text-balance text-[15px] md:text-lg leading-[1.35] tracking-[-0.022em] text-white/95">
+            <img src="/logo-delpedregal.png" alt="Del Pedregal" fetchPriority="high" decoding="async" className="md:hidden shrink-0 relative -translate-y-[10%] mx-auto h-auto w-[min(45vw,183px)] brightness-0 invert drop-shadow-lg" />
+
+            {/* Tablet and desktop: left column */}
+            <div className="hidden md:flex md:w-1/2 flex-col items-start gap-5">
+              <span className="inline-block w-fit rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.18em] uppercase">
+                {business.heroEyebrow || 'Agua mineral natural'}
+              </span>
+              <h1 className="max-w-xl text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05] text-balance">
+                {business.heroHeading || 'Agua mineral natural para comercios y gastronomía.'}
+              </h1>
+              <p className="max-w-lg text-lg leading-relaxed text-white/95">
+                {business.heroText || 'Abastecimiento directo para comercios y gastronomía.'}
+              </p>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <a
+                  href="#catalog"
+                  className="inline-flex items-center justify-center h-12 px-7 rounded-full bg-white text-[#1e3a8a] text-sm font-semibold shadow-lg hover:scale-[1.03] active:scale-95 transition"
+                >
+                  Ver productos
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center h-12 px-7 rounded-full border border-white/60 text-white text-sm font-semibold hover:bg-white/15 active:scale-95 transition"
+                >
+                  Acceso mayorista
+                </a>
+              </div>
+            </div>
+
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/Dosbidones-tapa-azul.png" fetchPriority="high" decoding="async" alt="" aria-hidden="true" className="pointer-events-none -mt-8 md:mt-0 min-h-0 flex-1 w-full max-w-[90%] max-h-[60svh] object-contain drop-shadow-2xl md:flex-none md:w-1/2 md:max-w-none md:h-full md:max-h-[72svh]" />
+
+            {/* Phones: supporting text below the bottles */}
+            <p className="md:hidden shrink-0 max-w-[17rem] text-balance text-[15px] leading-[1.35] tracking-[-0.022em] text-white/95">
               {business.heroText || 'Abastecimiento directo para comercios y gastronomía.'}
             </p>
           </div>

@@ -179,3 +179,30 @@ html {
 @media (prefers-reduced-motion: reduce) {
   .animate-slide-in-right, .animate-slide-in-down, .animate-fade-in { animation: none; }
 }
+
+/* Desktop and tablet: the top navigation sits inside the blue hero, so its dark text and light pills flip to white. */
+@media (min-width: 768px) {
+  .nav-on-blue [class*="text-[#1D1D1F]"],
+  .nav-on-blue [class*="text-[#515154]"] {
+    color: #fff;
+  }
+  .nav-on-blue [class~="bg-[#F5F5F7]"] {
+    background: rgba(255, 255, 255, 0.18);
+  }
+  .nav-on-blue button:hover,
+  .nav-on-blue a:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+}
+
+/* The burger's dropdown is a white card: keep its normal dark text and light hover inside the blue nav. */
+@media (min-width: 768px) {
+  .nav-on-blue nav[aria-label="Menú principal"] [class*="text-[#1D1D1F]"],
+  .nav-on-blue nav[aria-label="Menú principal"] [class*="text-[#515154]"] {
+    color: #1d1d1f;
+  }
+  .nav-on-blue nav[aria-label="Menú principal"] a:hover,
+  .nav-on-blue nav[aria-label="Menú principal"] button:hover {
+    background-color: #f5f5f7;
+  }
+}
