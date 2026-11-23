@@ -90,14 +90,14 @@ export default function FrescoHome({
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#172554] to-transparent" />
           {/* Logo, bottles and supporting text: one centered column that fits between the top bar and the bottom nav
               (padding reserves their height), the bottles taking whatever space is left, so nothing overlaps on any phone or tablet. */}
-          <div className="relative w-full h-full flex flex-col items-center gap-3 px-5 text-center pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[calc(6rem+env(safe-area-inset-bottom))] md:gap-4 md:pt-8 md:pb-8">
+          <div className="relative w-full h-full flex flex-col items-center gap-3 px-5 text-center pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[calc(8rem+env(safe-area-inset-bottom))] md:gap-4 md:pt-8 md:pb-8">
             <h1 className="shrink-0">
               {/* White version of the blue logo artwork */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/logo-delpedregal.png" alt="Del Pedregal" fetchPriority="high" decoding="async" className="mx-auto h-auto w-[min(45vw,183px)] md:w-[min(22vw,260px)] brightness-0 invert drop-shadow-lg" />
             </h1>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Dosbidones-tapa-azul.png" fetchPriority="high" decoding="async" alt="" aria-hidden="true" className="pointer-events-none min-h-0 flex-1 w-full max-w-[90%] max-h-[60svh] object-contain drop-shadow-2xl" />
+            <img src="/Dosbidones-tapa-azul.png" fetchPriority="high" decoding="async" alt="" aria-hidden="true" className="pointer-events-none -mt-8 md:-mt-12 min-h-0 flex-1 w-full max-w-[90%] max-h-[60svh] object-contain drop-shadow-2xl" />
             <p className="shrink-0 max-w-[17rem] md:max-w-md text-balance text-[15px] md:text-lg leading-[1.35] tracking-[-0.022em] text-white/95">
               {business.heroText || 'Abastecimiento directo para comercios y gastronomía.'}
             </p>
