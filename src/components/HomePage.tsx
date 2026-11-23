@@ -1,6 +1,6 @@
 'use client';
 
-import { Suspense, useState, useMemo, useEffect } from 'react';
+import { Suspense, useState, useMemo, useEffect, useCallback } from 'react';
 import type { HomeProperty } from '@/src/lib/homeData';
 import SiteFooter from '@/src/components/SiteFooter';
 import InfoSections from '@/src/components/InfoSections';
@@ -9,6 +9,9 @@ import CartButton from '@/src/components/CartButton';
 import WholesaleAccess from '@/src/components/WholesaleAccess';
 import SiteNavLinks from '@/src/components/SiteNavLinks';
 import MobileNavMenu from '@/src/components/MobileNavMenu';
+import SearchModal from '@/src/components/SearchModal';
+import { Search } from 'lucide-react';
+import { typeLabels } from '@/src/utils/format';
 import { useClient } from '@/src/context/ClientContext';
 import { applyBoxFirst, applyLevel } from '@/src/utils/pricing';
 import HomeAccessButton from '@/src/components/HomeAccessButton';
@@ -44,8 +47,20 @@ export default function FrescoHome({
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  // Search window (the icon at the right of the top nav).
+  const [searchOpen, setSearchOpen] = useState(false);
+  const closeSearch = useCallback(() => setSearchOpen(false), []);
   const allowLoose = client?.allowLoose ?? false;
   const properties = useMemo(() => applyBoxFirst(applyLevel(baseProperties, level), level, allowLoose), [baseProperties, level, allowLoose]);
+  // One category per type that has items, in the order they first appear.
+  const categories = Array.from(
+    new Map(
+      properties
+        .filter((p) => p.type)
+        .map((p) => [p.type as string, p.typeLabel ?? typeLabels[p.type as string] ?? (p.type as string)]),
+    ),
+    ([id, label]) => ({ id, label }),
+  );
 
   return (
     <div className="min-h-screen bg-[#FBFBFD] max-md:bg-[#172554] text-[#1D1D1F] selection:bg-[#000000] selection:text-[#FFFFFF] font-sans antialiased">
@@ -64,19 +79,38 @@ export default function FrescoHome({
           <div className="flex justify-center min-w-0">
             <HomeAccessButton onDark noModal />
           </div>
-          <span aria-hidden="true" />
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Búsqueda avanzada"
+            title="Búsqueda avanzada"
+            className="w-10 h-10 shrink-0 flex items-center justify-center text-white drop-shadow hover:opacity-80 active:scale-90 transition"
+          >
+            <Search className="w-5 h-5" />
+          </button>
         </div>
       </header>
 
+      <SearchModal open={searchOpen} onClose={closeSearch} categories={categories} initialQuery="" />
+
       {/* --- NAVIGATION --- */}
       <header className="hidden md:block sticky top-0 z-50 bg-[#FBFBFD]/80 backdrop-blur-md">
-        <div className="bg-[#b91c1c] text-white text-center text-[11px] sm:text-xs font-medium tracking-wide py-1.5 px-4 sm:px-6 leading-snug">
+        <div className="bg-[#1e3a8a] text-white text-center text-[11px] sm:text-xs font-medium tracking-wide py-1.5 px-4 sm:px-6 leading-snug">
           <span>Entregas diarias en Maldonado y Punta del Este</span>
         </div>
         <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
           <span className="font-semibold text-sm min-[420px]:text-base sm:text-lg tracking-tight"><BrandName /></span>
           <SiteNavLinks />
           <div className="flex items-center gap-1">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Búsqueda avanzada"
+            title="Búsqueda avanzada"
+            className="w-10 h-10 shrink-0 rounded-full flex items-center justify-center hover:bg-[#F5F5F7] transition-colors"
+          >
+            <Search className="w-5 h-5" />
+          </button>
           <WholesaleAccess />
           <CartButton />
           <MobileNavMenu />
