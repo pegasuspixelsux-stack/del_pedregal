@@ -167,7 +167,7 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
                 <Heart className="w-4 h-4" />
                 Favoritos
                 {favorites.length > 0 && (
-                  <span className="min-w-4 h-4 px-1 rounded-full bg-[#450a0a] text-white text-[10px] font-semibold flex items-center justify-center">
+                  <span className="min-w-4 h-4 px-1 rounded-full bg-[#1e3a8a] text-white text-[10px] font-semibold flex items-center justify-center">
                     {favorites.length}
                   </span>
                 )}
@@ -204,7 +204,7 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
                     onClick={() => change(setCategory)(c.id)}
                     aria-pressed={active}
                     className={`shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-colors ${
-                      active ? 'bg-[#450a0a] text-white' : 'bg-white text-[#1D1D1F] hover:bg-[#F5F5F7]'
+                      active ? 'bg-[#1e3a8a] text-white' : 'bg-white text-[#1D1D1F] hover:bg-[#F5F5F7]'
                     }`}
                   >
                     {c.label}
@@ -251,8 +251,6 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
               {prop.href && (
                 <Link href={prop.href} aria-label={`Ver ${prop.title}`} className="absolute inset-0 z-[5]" />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
               <div className="absolute top-3 left-3 md:top-5 md:left-5 z-10 flex flex-wrap gap-1.5">
                 {prop.inStock === false && (
                   <span className="bg-black/80 text-white text-[10px] md:text-xs font-semibold px-2 md:px-3 py-1 rounded-full">Sin stock</span>
@@ -266,20 +264,20 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
                   onClick={() => addToCart(prop)}
                   disabled={prop.inStock === false}
                   aria-label={prop.inStock === false ? `${prop.title} está sin stock` : `Agregar ${prop.title} al carrito`}
-                  className="w-8 h-8 rounded-full bg-[#450a0a] text-white flex items-center justify-center shadow-sm hover:bg-[#5a1212] active:scale-95 transition disabled:opacity-40 disabled:cursor-not-allowed"
+                  className="w-8 h-8 rounded-full bg-[#1e3a8a] text-white flex items-center justify-center shadow-sm hover:bg-[#1e40af] active:scale-95 transition disabled:opacity-40 disabled:cursor-not-allowed"
                 >
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
 
-              <div className="relative z-10 text-white pointer-events-none">
+              <div className="relative z-10 text-black pointer-events-none">
                 <h2 className={`text-2xl mb-3 md:text-lg md:mb-3 font-semibold tracking-tight leading-tight`}>{prop.title}</h2>
                 <div className={`flex flex-wrap items-end justify-between gap-x-2 text-lg md:text-sm font-medium`}>
-                  <span className="text-white/80 truncate">{prop.area}</span>
+                  <span className="text-black/70 truncate">{prop.area}</span>
                   <span className="max-w-full font-semibold">
                     {prop.salePrice ? (
                       <>
-                        <s className="text-white/60 font-normal mr-1.5">{prop.price}</s>
+                        <s className="text-black/50 font-normal mr-1.5">{prop.price}</s>
                         {prop.salePrice}
                       </>
                     ) : (
@@ -317,7 +315,7 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
                   aria-label={`Página ${n}`}
                   aria-current={n === currentPage ? 'page' : undefined}
                   className={`h-11 min-w-11 px-3 rounded-full text-sm font-medium transition-colors ${
-                    n === currentPage ? 'bg-[#450a0a] text-white' : 'bg-white hover:bg-[#F5F5F7]'
+                    n === currentPage ? 'bg-[#1e3a8a] text-white' : 'bg-white hover:bg-[#F5F5F7]'
                   }`}
                 >
                   {n}
