@@ -42,8 +42,10 @@ export default function PropertyImage({
 }: PropertyImageProps) {
   if (!src) return null;
 
+  // "/image_bottles/…" are files in this project's public folder, not ImageKit paths.
+  const isLocal = src.startsWith('/image_bottles/');
   const isImageKit =
-    src.startsWith('/') || (URL_ENDPOINT !== '' && src.startsWith(URL_ENDPOINT));
+    !isLocal && (src.startsWith('/') || (URL_ENDPOINT !== '' && src.startsWith(URL_ENDPOINT)));
 
   if (!isImageKit) {
     // Not on ImageKit (e.g. the Wikimedia sample photos): resized and converted to WebP/AVIF by Next's image optimizer
