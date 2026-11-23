@@ -112,10 +112,10 @@ export default async function ItemPage({ params }: Props) {
               className={`object-contain px-10 pt-28 pb-8 ${inStock ? '' : 'opacity-50 grayscale'}`}
             />
           )}
-          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[color-mix(in_srgb,#1e3a8a_92%,transparent)] from-25% via-[color-mix(in_srgb,#1e3a8a_50%,transparent)] via-55% to-transparent" aria-hidden="true" />
+          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[color-mix(in_srgb,#1e3a8a_92%,transparent)] from-25% via-[color-mix(in_srgb,#1e3a8a_50%,transparent)] via-55% to-transparent" aria-hidden="true" />
           <Link
             href="/"
-            className="absolute top-[6.75rem] left-4 z-10 inline-flex items-center gap-2 text-sm font-medium text-white bg-black/40 backdrop-blur px-3 py-1.5 rounded-full"
+            className="absolute top-[6.75rem] left-4 z-10 inline-flex items-center gap-2 text-sm font-medium text-[#1e3a8a]"
           >
             <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Inicio
           </Link>
