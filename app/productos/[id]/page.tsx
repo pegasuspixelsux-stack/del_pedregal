@@ -101,7 +101,7 @@ export default async function ItemPage({ params }: Props) {
 
       <main className="max-md:bg-[#FBFBFD] max-w-[1440px] mx-auto px-6 pt-4 pb-0 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-16 items-start">
         {/* Mobile hero: the photo in an inset card (Inicio and favorites inside it), product info below it */}
-        <SwipeSection prevHref={prevHref} nextHref={nextHref} className="md:hidden relative h-[64svh] overflow-hidden rounded-3xl bg-white border border-[#000000]/5 shadow-sm">
+        <SwipeSection prevHref={prevHref} nextHref={nextHref} className="md:hidden relative aspect-square w-full overflow-hidden rounded-3xl bg-white border border-[#000000]/5 shadow-sm">
           {photo && (
             <PropertyImage
               src={photo}
