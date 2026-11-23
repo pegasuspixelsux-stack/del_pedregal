@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp, type FirebaseApp } from 'firebase/app';
-import { getAuth, type Auth } from 'firebase/auth';
+import { getAuth, initializeAuth, indexedDBLocalPersistence, browserLocalPersistence, type Auth } from 'firebase/auth';
 import { getFirestore, type Firestore } from 'firebase/firestore';
 import { getStorage, type FirebaseStorage } from 'firebase/storage';
 
@@ -25,6 +25,16 @@ export const app: FirebaseApp | null = isFirebaseConfigured
     : initializeApp(firebaseConfig)
   : null;
 
-export const auth: Auth | null = app ? getAuth(app) : null;
+// Only email + password sign-in is used. getAuth() also loads Google's api.js (popup / redirect sign-in), which the
+// Content Security Policy blocks; initializeAuth without a popup resolver skips that script.
+function createAuth(firebaseApp: FirebaseApp): Auth {
+  try {
+    return initializeAuth(firebaseApp, { persistence: [indexedDBLocalPersistence, browserLocalPersistence] });
+  } catch {
+    return getAuth(firebaseApp); // already initialized (hot reload)
+  }
+}
+
+export const auth: Auth | null = app ? createAuth(app) : null;
 export const db: Firestore | null = app ? getFirestore(app) : null;
 export const storage: FirebaseStorage | null = app ? getStorage(app) : null;

@@ -95,6 +95,10 @@ export function formatItemPricing(
 }
 
 export const typeLabels: Record<string, string> = {
+  'agua-600ml': '600 ml',
+  'agua-1l': '1 L',
+  'agua-6l': '6 L',
+  'agua-20l': '20 L',
   'cortes-parrilla-alta-gama': 'Cortes de Parrilla y Alta Gama',
   'cortes-asadores-versatiles': 'Cortes Asadores y Versátiles',
   'cortes-cocina-rotiseria': 'Cortes para Cocina, Rotisería y Minutas',

@@ -132,6 +132,6 @@ export async function loadHomeData(): Promise<{ properties: HomeProperty[]; slid
 function sampleHomeData(): { properties: HomeProperty[]; slides: HeroSlide[] } {
   const categories = mergeCategories([]);
   const label = (t: string) => categories.find((c) => c.id === t)?.name ?? t;
-  const items: Property[] = sampleProperties.map((s, i) => ({ ...s, id: `sample-${i + 1}`, agentId: '', createdAt: 0, updatedAt: 0, featured: i < 5 }));
+  const items: Property[] = sampleProperties.map((s, i) => ({ ...s, id: `sample-${i + 1}`, agentId: '', createdAt: 0, updatedAt: 0, featured: true }));
   return { properties: items.map((p) => toHomeProperty(p, label)), slides: items.slice(0, 5).map((p) => toSlide(p, label)) };
 }
