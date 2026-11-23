@@ -25,8 +25,12 @@ const ORDER_BENEFITS: { title: string; who: string; text: string }[] = [
 
 const FAQ: { q: string; a: string }[] = [
   {
-    q: '¿Quiénes pueden comprar en Fresco?',
-    a: 'Vendemos solo a empresas: restaurantes, hoteles, pizzerías, almacenes, comercios y servicios de catering. Para ver tus precios y hacer pedidos necesitás una cuenta aprobada.',
+    q: '¿Qué presentaciones de agua tienen?',
+    a: 'Agua mineral natural Del Pedregal sin gas en cuatro tamaños: botella de 600 ml, botella de 1 litro, botellón de 6 litros y bidón retornable de 20 litros.',
+  },
+  {
+    q: '¿Quiénes pueden comprar?',
+    a: 'Vendemos a empresas, comercios, restaurantes, hoteles y oficinas. Para ver tus precios y hacer pedidos necesitás una cuenta aprobada.',
   },
   {
     q: '¿Cómo solicito mi acceso?',
@@ -37,20 +41,12 @@ const FAQ: { q: string; a: string }[] = [
     a: 'Entrás desde "Acceso mayoristas" con tu teléfono y tu contraseña. Si te asignamos un PIN de 4 números, también podés entrar con tu teléfono y ese PIN.',
   },
   {
-    q: '¿Los precios son fijos?',
-    a: 'Los precios de mercado son válidos por el día. Si el pedido es para otro día, pueden cambiar: antes del envío te confirmamos el pedido con los precios ajustados.',
-  },
-  {
-    q: '¿Se compra por caja o por unidad?',
-    a: 'Los clientes piden por caja. Algunos productos, o algunos clientes, tienen una excepción para pedir suelto (por unidad o por atado). En cada producto ves lo que trae la caja y el precio por unidad.',
-  },
-  {
     q: '¿Cómo hago un pedido?',
-    a: 'Agregá productos con "Pedido rápido" o desde la ficha del producto. En el carrito indicás si es entrega o retiro, la hora de recepción y tus instrucciones. Podés cambiar el carrito hasta enviarlo; una vez enviado, los cambios se hacen con un pedido nuevo.',
+    a: 'Agregá productos desde el catálogo o desde la ficha del producto. En el carrito indicás si es entrega o retiro, la hora de recepción y tus instrucciones. Podés cambiar el carrito hasta enviarlo; una vez enviado, los cambios se hacen con un pedido nuevo.',
   },
   {
-    q: '¿Qué es "Mis favoritos"?',
-    a: 'Es tu lista de productos habituales. Con "Pedir favoritos" los cargás al carrito de una vez, siempre con el precio de hoy y solo los que tienen stock.',
+    q: '¿El bidón de 20 litros es retornable?',
+    a: 'Sí. El bidón de 20 litros es un envase retornable: en cada entrega retiramos el vacío. Las botellas de 600 ml y 1 litro son envases no retornables.',
   },
   {
     q: '¿A qué zonas y en qué horarios entregan?',
@@ -61,8 +57,12 @@ const FAQ: { q: string; a: string }[] = [
     a: 'Cuenta corriente, tarjeta o efectivo. Acordamos la que corresponde cuando aprobamos tu cuenta.',
   },
   {
-    q: '¿Cómo garantizan la frescura y el peso?',
-    a: 'Seleccionamos frutas, verduras y hojas verdes directamente en el mercado, pesamos cada pedido con exactitud y te mostramos el precio claro. Si algo no llega como esperabas, avisanos por WhatsApp o por correo.',
+    q: '¿Qué es "Mis favoritos"?',
+    a: 'Es tu lista de productos habituales. Con "Pedir favoritos" los cargás al carrito de una vez, siempre con el precio de hoy y solo los que tienen stock.',
+  },
+  {
+    q: 'Si algo no llega como esperaba, ¿qué hago?',
+    a: 'Avisanos por WhatsApp o por correo y lo resolvemos a la brevedad.',
   },
 ];
 
@@ -166,12 +166,12 @@ export default function InfoSections() {
             <div id="vision-body" className={`${openVision ? 'block mt-6' : 'hidden'} md:block md:mt-0 space-y-6`}>
             {/* The heading scales with the column (cqw) and balances its lines, so it spans the same width as the paragraph below */}
             <p className="text-2xl md:text-3xl xl:text-4xl font-semibold tracking-tight leading-[1.15] [text-wrap:balance]">
-              Carnes de calidad para tu cocina, todos los días.
+              Agua mineral natural, directo a tu puerta.
             </p>
             <p className="text-[#515154] font-light leading-relaxed">
-              En Mercado de Carnes somos especialistas en la distribución de carnes para el sector
-              gastronómico y comercial. Seleccionamos cortes de parrilla, asadores y achuras, y los
-              llevamos a la puerta de tu establecimiento con entregas en el día o en 24 horas.
+              Del Pedregal es agua mineral natural sin gas, en botellas de 600 ml y 1 litro, botellones
+              de 6 litros y bidones retornables de 20 litros. Abastecemos a hogares, comercios y empresas
+              con entregas en el día o en 24 horas.
             </p>
             <a
               href="#contact"
@@ -183,10 +183,11 @@ export default function InfoSections() {
             </div>
           </div>
           <div
-            className={`${openVision ? '' : 'hidden'} md:block aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-2xl bg-cover bg-center bg-[#E5E5EA]`}
+            className={`${openVision ? '' : 'hidden'} md:block aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-2xl bg-no-repeat bg-center bg-[#E5E5EA]`}
             style={{
-              // Grilled steaks (Wikimedia Commons, CC0 / public domain)
-              backgroundImage: 'url(/quienes-somos.webp)',
+              // The two water bottles from the hero, whole and centered
+              backgroundImage: 'url(/image_bottles/Dosbidones-tapa-azul.png)',
+              backgroundSize: '80%',
             }}
           />
         </div>

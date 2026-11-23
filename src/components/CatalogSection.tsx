@@ -237,14 +237,15 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
             <div key={prop.id}>
             <div>
             <div
-              className={`group relative aspect-[4/3] md:aspect-square rounded-2xl overflow-hidden bg-[#E5E5EA] flex flex-col justify-end p-3 md:p-5 transition-transform duration-500 hover:-translate-y-1`}
+              className={`group relative aspect-square rounded-2xl overflow-hidden bg-[#E5E5EA] flex flex-col justify-end p-3 md:p-5 transition-transform duration-500 hover:-translate-y-1`}
             >
               <div className={`absolute inset-0 transition-transform duration-700 group-hover:scale-105 ${prop.inStock === false ? 'opacity-50 grayscale' : ''}`}>
                 <PropertyImage
                   src={prop.image}
                   alt={prop.title}
                   variant="card"
-                  sizes="(min-width: 768px) 25vw, 50vw"
+                  sizes="(min-width: 768px) 25vw, 100vw"
+                  className="object-contain px-6 pt-10 pb-24 md:px-8 md:pt-12 md:pb-28"
                 />
               </div>
               {prop.href && (

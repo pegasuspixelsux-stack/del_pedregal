@@ -5,7 +5,6 @@ import { Clock, FileText, Mail, MapPin, MessageCircle, Phone } from 'lucide-reac
 import { useBusiness } from '@/src/context/BusinessContext';
 import { useCategories } from '@/src/hooks/useCategories';
 import { socialLinks } from '@/src/components/SocialIcons';
-import BrandName from '@/src/components/BrandName';
 import { whatsappUrl } from '@/src/utils/format';
 
 const linkClass = 'hover:text-black hover:underline underline-offset-2 transition-colors';
@@ -25,8 +24,10 @@ export default function SiteFooter({ onGreen = true }: { onGreen?: boolean } = {
       <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-12 mb-[75px]">
         {/* Column 1: Brand (tablets, portrait and landscape: its own full-width row) */}
         <div className="space-y-4 md:col-span-2 xl:col-span-1">
-          <div className="flex items-center text-3xl">
-            <BrandName onDark={onGreen} />
+          <div className="flex items-center">
+            {/* White on the blue page on phones; the original blue on the white footer. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/image_bottles/logo-delpedregal.png" alt="Del Pedregal" className={`h-24 w-auto ${onGreen ? 'max-md:brightness-0 max-md:invert' : ''}`} />
           </div>
 
           {hasContact && (
