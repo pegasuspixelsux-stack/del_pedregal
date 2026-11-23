@@ -224,16 +224,9 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
               </button>
             </div>
           )}
-          {visible.map((prop, idx) => {
-            const sectionLabel = (p: { type?: string | null; typeLabel?: string | null }) =>
-              p.typeLabel ?? typeLabels[p.type as string] ?? p.type ?? 'Otros';
-            const sectionHeading =
-              idx === 0 || visible[idx - 1].type !== prop.type ? (
-                <h3 className="col-span-full mt-4 first:mt-0 md:mt-6 text-xl md:text-2xl font-semibold tracking-tight">{sectionLabel(prop)}</h3>
-              ) : null;
+          {visible.map((prop) => {
             return (
             <Fragment key={String(prop.id)}>
-            {sectionHeading}
             <div key={prop.id}>
             <div>
             <div
