@@ -35,7 +35,21 @@ export default function BottomNav() {
       <Link href="/" aria-label="Inicio" title="Inicio" className={tab(home)} aria-current={home ? 'page' : undefined}>
         <House className={icon(home)} aria-hidden="true" />
       </Link>
-      <Link href="/#catalog" aria-label="Productos" title="Productos" className={tab(catalog)} aria-current={catalog ? 'page' : undefined}>
+      <Link
+        href="/#catalog"
+        aria-label="Productos"
+        title="Productos"
+        className={tab(catalog)}
+        aria-current={catalog ? 'page' : undefined}
+        onClick={(e) => {
+          // Already on the homepage: slide the hero up and bring the products into view (the catalog section does the same after a page change).
+          if (pathname === '/') {
+            e.preventDefault();
+            document.getElementById('catalog')?.scrollIntoView({ behavior: 'smooth' });
+            history.replaceState(null, '', '/#catalog');
+          }
+        }}
+      >
         <LayoutGrid className={icon(catalog)} aria-hidden="true" />
       </Link>
       <Link href="/favoritos" aria-label="Favoritos" title="Favoritos" className={tab(favorites)} aria-current={favorites ? 'page' : undefined}>

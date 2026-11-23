@@ -159,3 +159,23 @@ html {
     padding-bottom: calc(5.25rem + env(safe-area-inset-bottom));
   }
 }
+
+/* Navigation animations: cart slides in from the right, favorites drops in from the top. */
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes slide-in-down {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-slide-in-right { animation: slide-in-right 0.35s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+.animate-slide-in-down { animation: slide-in-down 0.4s cubic-bezier(0.22, 1, 0.36, 1) backwards; }
+.animate-fade-in { animation: fade-in 0.3s ease-out both; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-slide-in-right, .animate-slide-in-down, .animate-fade-in { animation: none; }
+}

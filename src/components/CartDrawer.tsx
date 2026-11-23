@@ -159,12 +159,12 @@ export default function CartDrawer({
 
   return (
     <div className="fixed inset-0 z-[60]">
-      <div className="absolute inset-0 bg-black/40" onClick={onClose} aria-hidden="true" />
+      <div className="absolute inset-0 bg-black/40 animate-fade-in" onClick={onClose} aria-hidden="true" />
       <aside
         role="dialog"
         aria-modal="true"
         aria-label="Carrito de compras"
-        className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col"
+        className="absolute right-0 top-0 h-full w-full max-w-md bg-white shadow-xl flex flex-col animate-slide-in-right"
       >
         <div className="flex items-center justify-between px-6 h-16 border-b border-[#000000]/5 shrink-0">
           <h2 className="font-semibold tracking-tight inline-flex items-center gap-2">
