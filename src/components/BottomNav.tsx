@@ -6,7 +6,7 @@ import { Heart, House, LayoutGrid, ShoppingCart } from 'lucide-react';
 import { useCart } from '@/src/context/CartContext';
 
 /**
- * Bottom navigation for phones: Inicio, Catálogo, Favoritos and Carrito, on every page (the CSS in globals.css shows it
+ * Bottom navigation for phones: Inicio, Productos, Favoritos and Carrito, on every page (the CSS in globals.css shows it
  * below 768px only: `.app-bottom-nav`). It also covers the installed app (home-screen icon), which has no browser toolbar.
  * A floating rounded bar of icons; the current page is shown by a green icon, with no filled background.
  */
@@ -35,7 +35,7 @@ export default function BottomNav() {
       <Link href="/" aria-label="Inicio" title="Inicio" className={tab(home)} aria-current={home ? 'page' : undefined}>
         <House className={icon(home)} aria-hidden="true" />
       </Link>
-      <Link href="/#catalog" aria-label="Catálogo" title="Catálogo" className={tab(catalog)} aria-current={catalog ? 'page' : undefined}>
+      <Link href="/#catalog" aria-label="Productos" title="Productos" className={tab(catalog)} aria-current={catalog ? 'page' : undefined}>
         <LayoutGrid className={icon(catalog)} aria-hidden="true" />
       </Link>
       <Link href="/favoritos" aria-label="Favoritos" title="Favoritos" className={tab(favorites)} aria-current={favorites ? 'page' : undefined}>

@@ -15,7 +15,7 @@ export default function SiteFooter({ onGreen = true }: { onGreen?: boolean } = {
   const business = useBusiness();
   const socials = socialLinks(business);
   const { categories } = useCategories();
-  const wa = business.whatsapp ? whatsappUrl(business.whatsapp, 'Hola, quiero consultar por el catálogo.') : null;
+  const wa = business.whatsapp ? whatsappUrl(business.whatsapp, 'Hola, quiero consultar por los productos.') : null;
   const hasContact = Boolean(
     business.address || business.email || business.whatsapp || business.phone || business.hours || business.rut || business.license,
   );
@@ -95,12 +95,11 @@ export default function SiteFooter({ onGreen = true }: { onGreen?: boolean } = {
 
         {/* Column 2: Inventory */}
         <div className="space-y-4">
-          <p className="text-sm md:text-xs uppercase tracking-widest text-[#515154] font-semibold">Catálogo</p>
+          <p className="text-sm md:text-xs uppercase tracking-widest text-[#515154] font-semibold">Productos</p>
           <ul className="space-y-3 text-sm text-[#1D1D1F] font-light">
             {categories.slice(0, 4).map((c) => (
               <li key={c.id}><Link href={`/?category=${encodeURIComponent(c.id)}#catalog`} className={linkClass}>{c.name}</Link></li>
             ))}
-            <li><Link href="/#catalog" className={`${linkClass} font-medium`}>Ver todo el catálogo →</Link></li>
           </ul>
         </div>
 

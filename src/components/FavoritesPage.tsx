@@ -126,7 +126,7 @@ export default function FavoritesPage() {
             <p className="font-medium">Todavía no marcaste favoritos.</p>
             <p className="text-[#515154] font-light">Tocá el corazón en cualquier producto para guardarlo acá.</p>
             <Link href="/#catalog" className="inline-block rounded-full bg-[#1D1D1F] text-white px-6 py-2.5 text-xs font-medium hover:bg-[#333336] transition-colors">
-              Ver el catálogo
+              Ver los productos
             </Link>
           </div>
         ) : (

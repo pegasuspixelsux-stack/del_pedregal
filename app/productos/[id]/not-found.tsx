@@ -7,7 +7,7 @@ export default function ItemNotFound() {
         <p className="text-xs uppercase tracking-widest text-[#515154] font-semibold">Mercado de Carnes</p>
         <h1 className="text-3xl font-semibold tracking-tight">Producto no encontrado</h1>
         <p className="text-sm text-[#515154]">Este producto no existe o ya no está disponible.</p>
-        <Link href="/productos" className="inline-block bg-[#1D1D1F] text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-[#333336] transition-all">
+        <Link href="/" className="inline-block bg-[#1D1D1F] text-white text-sm font-medium px-6 py-3 rounded-full hover:bg-[#333336] transition-all">
           Ver todos los productos
         </Link>
       </div>

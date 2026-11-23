@@ -114,10 +114,10 @@ export default async function ItemPage({ params }: Props) {
           )}
           <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[color-mix(in_srgb,#1e3a8a_92%,transparent)] from-25% via-[color-mix(in_srgb,#1e3a8a_50%,transparent)] via-55% to-transparent" aria-hidden="true" />
           <Link
-            href="/productos"
+            href="/"
             className="absolute top-[6.75rem] left-4 z-10 inline-flex items-center gap-2 text-sm font-medium text-white bg-black/40 backdrop-blur px-3 py-1.5 rounded-full"
           >
-            <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Catálogo
+            <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Inicio
           </Link>
           <FavoriteButton productId={String(item.id)} title={item.title} className="absolute top-[6.75rem] right-4 w-10 h-10 z-10" />
           {!inStock && (
@@ -156,10 +156,10 @@ export default async function ItemPage({ params }: Props) {
         </div>
 
         <Link
-          href="/productos"
+          href="/"
           className="hidden md:inline-flex md:col-span-2 justify-self-start md:-mb-10 items-center gap-2 text-sm font-medium text-[#515154] hover:text-[#1D1D1F] transition-colors"
         >
-          <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Volver al Catálogo
+          <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Volver al inicio
         </Link>
         <div className="hidden md:block relative aspect-square rounded-2xl overflow-hidden bg-[#E5E5EA]">
           {photo && (
