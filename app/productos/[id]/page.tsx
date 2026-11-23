@@ -47,6 +47,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+/** Keeps a size like "20 L" or "600 ml" together on one line (a non-breaking space between the number and the unit). */
+const keepUnit = (title: string) => title.replace(/(\d)\s+(ml|L)\b/gi, '$1 $2');
+
 export default async function ItemPage({ params }: Props) {
   const { id } = await params;
   const item = await loadItem(id);
@@ -131,7 +134,7 @@ export default async function ItemPage({ params }: Props) {
           <div className="flex items-start justify-between gap-4">
             <div className="min-w-0 space-y-1">
               <p className="text-xs uppercase tracking-widest text-[#515154] font-semibold">{category}</p>
-              <h1 className="text-2xl font-extrabold tracking-tight">{item.title}</h1>
+              <h1 className="text-2xl font-extrabold tracking-tight">{keepUnit(item.title)}</h1>
             </div>
             <div className="shrink-0 text-right">
               <ItemPriceView glass categoryId={item.type} pricing={pricing} />
@@ -183,7 +186,7 @@ export default async function ItemPage({ params }: Props) {
           <div className="space-y-4">
             <div className="hidden md:block space-y-4">
               <p className="text-xs uppercase tracking-widest text-[#515154] font-semibold">{category}</p>
-              <h1 className="text-5xl font-extrabold tracking-tight">{item.title}</h1>
+              <h1 className="text-5xl font-extrabold tracking-tight">{keepUnit(item.title)}</h1>
               <ItemPriceView categoryId={item.type} pricing={pricing} />
               {quantity && (
                 <p className="text-sm text-[#515154]">

@@ -96,7 +96,7 @@ export default function FrescoHome({
               <img src="/logo-delpedregal.png" alt="Del Pedregal" fetchPriority="high" decoding="async" className="mx-auto h-auto w-[min(50vw,203px)] md:w-[min(22vw,260px)] brightness-0 invert drop-shadow-lg" />
             </h1>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/Dosbidones-tapa-azul.png" fetchPriority="high" decoding="async" alt="" aria-hidden="true" className="pointer-events-none relative -translate-y-[10%] mt-4 h-[40svh] md:h-[44svh] w-auto max-w-[90%] object-contain drop-shadow-2xl" />
+            <img src="/Dosbidones-tapa-azul.png" fetchPriority="high" decoding="async" alt="" aria-hidden="true" className="pointer-events-none relative -translate-y-[10%] mt-4 h-[50svh] md:h-[55svh] w-auto max-w-[90%] object-contain drop-shadow-2xl" />
             <p className="relative -translate-y-[5svh] mt-3 max-w-[17rem] md:max-w-md text-balance text-[15px] md:text-lg leading-[1.35] tracking-[-0.022em] text-white/95">
               {business.heroText || 'Abastecimiento directo para comercios y gastronomía.'}
             </p>

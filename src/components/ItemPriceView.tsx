@@ -37,7 +37,7 @@ export default function ItemPriceView({ pricing, categoryId, glass }: { pricing:
         return (
           <div key={o.mode} className={`${options.length === 1 && !glass ? 'col-span-2' : ''} rounded-2xl ${card} ${glass ? 'p-0' : 'p-4 md:p-5'}`}>
             <dt className={`text-xs uppercase tracking-wider ${muted} font-semibold`}>
-              {wholesale ? 'Tu precio' : 'Minorista'} · {pricingModeLabels[o.mode]}
+              {wholesale ? 'Tu precio' : 'Minorista'} · {o.mode === 'por_unidad' ? 'Unidad' : pricingModeLabels[o.mode]}
             </dt>
             <dd className={`mt-1 flex ${glass ? 'flex-col items-end' : 'flex-wrap items-baseline gap-x-2'}`}>
               <span className="flex items-baseline gap-1.5">

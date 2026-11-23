@@ -27,7 +27,7 @@ export default function SiteFooter({ onGreen = true }: { onGreen?: boolean } = {
           <div className="flex items-center">
             {/* White on the blue page on phones; the original blue on the white footer. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/image_bottles/logo-delpedregal.png" alt="Del Pedregal" className={`h-24 w-auto ${onGreen ? 'max-md:brightness-0 max-md:invert' : ''}`} />
+            <img src="/image_bottles/logo-delpedregal.png" alt="Del Pedregal" className={`h-auto w-[min(50vw,203px)] md:h-24 md:w-auto ${onGreen ? 'max-md:brightness-0 max-md:invert' : ''}`} />
           </div>
 
           {hasContact && (
