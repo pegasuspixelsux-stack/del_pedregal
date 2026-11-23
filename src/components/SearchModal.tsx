@@ -139,7 +139,7 @@ export default function SearchModal({
             <button type="button" onClick={clear} className="h-12 px-5 rounded-full bg-[#F5F5F7] text-sm font-medium hover:bg-[#E8E8ED] active:scale-95 transition">
               Borrar
             </button>
-            <button type="submit" className="flex-1 h-12 rounded-full bg-[#2E7D32] text-white text-base md:text-sm font-semibold hover:bg-[#256628] active:scale-95 transition inline-flex items-center justify-center gap-2">
+            <button type="submit" className="flex-1 h-12 rounded-full bg-[#1e3a8a] text-white text-base md:text-sm font-semibold hover:bg-[#1e40af] active:scale-95 transition inline-flex items-center justify-center gap-2">
               <Search className="w-4 h-4" /> Buscar
             </button>
           </div>

@@ -82,11 +82,11 @@ export default function InstallButton({ className = '' }: { className?: string }
               <h2 className="text-lg font-semibold tracking-tight">Agregar Fresco a tu pantalla de inicio</h2>
               <ol className="mt-4 space-y-3 text-sm text-[#515154]">
                 <li className="flex items-start gap-3">
-                  <Share className="w-5 h-5 shrink-0 text-[#2E7D32]" aria-hidden="true" />
+                  <Share className="w-5 h-5 shrink-0 text-[#1e3a8a]" aria-hidden="true" />
                   <span>Tocá el botón <strong className="font-medium text-[#1D1D1F]">Compartir</strong> del navegador.</span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <SquarePlus className="w-5 h-5 shrink-0 text-[#2E7D32]" aria-hidden="true" />
+                  <SquarePlus className="w-5 h-5 shrink-0 text-[#1e3a8a]" aria-hidden="true" />
                   <span>Elegí <strong className="font-medium text-[#1D1D1F]">Agregar a pantalla de inicio</strong> y confirmá.</span>
                 </li>
               </ol>

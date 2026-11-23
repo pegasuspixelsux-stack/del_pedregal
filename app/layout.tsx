@@ -38,29 +38,30 @@ export async function generateMetadata(): Promise<Metadata> {
   const name = businessName || DEFAULT_TITLE;
   return {
     metadataBase: new URL(SITE_URL),
-    title: { default: name, template: "%s | Mercado de Carnes" },
+    title: { default: name, template: "%s | Del Pedregal" },
     description: DEFAULT_DESCRIPTION,
-    applicationName: "Mercado de Carnes",
+    applicationName: "Agua Del Pedregal",
     keywords: [
-      "Mercado de Carnes",
-      "carnes",
-      "distribuidor de carnes",
+      "Agua Del Pedregal",
+      "agua mineral",
+      "agua mineral natural",
+      "bidones de agua",
       "mayorista",
       "Punta del Este",
       "Maldonado",
-      "gastronomía",
-      "restaurantes",
-      "hoteles",
+      "empresas",
+      "comercios",
+      "hogares",
     ],
-    authors: [{ name: "Mercado de Carnes" }],
-    creator: "Mercado de Carnes",
-    publisher: "Mercado de Carnes",
+    authors: [{ name: "Agua Del Pedregal" }],
+    creator: "Agua Del Pedregal",
+    publisher: "Agua Del Pedregal",
     category: "food",
     // Link preview (WhatsApp, Facebook, X): the flyer's text and a screenshot of /opengraph. Pages with their own
     // image (each product) override it.
     openGraph: {
       type: "website",
-      siteName: "Mercado de Carnes",
+      siteName: "Agua Del Pedregal",
       title: SHARE_TITLE,
       description: SHARE_DESCRIPTION,
       locale: "es_UY",
@@ -72,7 +73,7 @@ export async function generateMetadata(): Promise<Metadata> {
       description: SHARE_DESCRIPTION,
       images: [SHARE_IMAGE],
     },
-    appleWebApp: { capable: true, title: "Mercado de Carnes", statusBarStyle: "default" },
+    appleWebApp: { capable: true, title: "Agua Del Pedregal", statusBarStyle: "default" },
     formatDetection: { telephone: false },
   };
 }
@@ -83,7 +84,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="es-UY"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-      style={{ "--brand-bg": business.backgroundColor || "#2E7D32" } as CSSProperties}
+      style={{ "--brand-bg": business.backgroundColor || "#1e3a8a" } as CSSProperties}
     >
       <body className="min-h-full flex flex-col">
         <BusinessProvider initial={business}>

@@ -1,14 +1,14 @@
 /** Shared site texts (used by the layout metadata and the Open Graph page). */
-export const SITE_TITLE = 'Mercado de Carnes';
+export const SITE_TITLE = 'Del Pedregal Acceso Mayorista';
 export const SITE_DESCRIPTION =
-  'Mercado de Carnes, distribuidor de carnes para la gastronomía de Punta del Este: cortes de parrilla, asadores y achuras para restaurantes, hoteles y comercios. Catálogo mayorista y entregas diarias.';
+  'Del Pedregal, acceso mayorista: agua mineral natural sin gas en botellas de 600 ml y 1 L, botellones de 6 L y bidones retornables de 20 L. Solicitá tu acceso y pedí online, con entregas en Maldonado, Montevideo y Canelones.';
 
 /** Link preview (WhatsApp, Facebook, X): the text of the /opengraph flyer and a screenshot of it. */
-export const SHARE_TITLE = 'Tus clientes piden solos. Siempre con tu margen.';
+export const SHARE_TITLE = 'Del Pedregal Acceso Mayorista';
 export const SHARE_DESCRIPTION =
-  'La app de pedidos para distribuidores de frutas y verduras. Pedidos fáciles de procesar · Precios dinámicos, cambios en segundos · Niveles de precio por cliente · Protegé tu margen en cada venta · Tus clientes repiten su pedido en un clic · Fidelizá con favoritos y app propia';
+  'Agua mineral natural sin gas para empresas y comercios: botellas de 600 ml y 1 L, botellones de 6 L y bidones de 20 L. Solicitá tu acceso mayorista y hacé tus pedidos online.';
 /** A 1440 x 1440 px (square) screenshot of the /opengraph hero. WhatsApp caches previews hard: a changed image needs a new file name (opengraph-v7.jpg ...). */
 export const SHARE_IMAGE = '/opengraph-v6.jpg';
 export const SHARE_IMAGE_WIDTH = 1440;
 export const SHARE_IMAGE_HEIGHT = 1440;
-export const SHARE_IMAGE_ALT = 'Fresco, la app de pedidos para distribuidores de frutas y verduras: el catálogo en un celular';
+export const SHARE_IMAGE_ALT = 'Del Pedregal, agua mineral natural: acceso mayorista';

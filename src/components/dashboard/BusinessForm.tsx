@@ -30,7 +30,7 @@ export default function BusinessForm() {
       return setMessage({ ok: false, text: 'El correo no parece válido.' });
     }
     if (form.backgroundColor.trim() && !/^#[0-9a-fA-F]{6}$/.test(form.backgroundColor.trim())) {
-      return setMessage({ ok: false, text: 'El color debe ser un código como #2E7D32.' });
+      return setMessage({ ok: false, text: 'El color debe ser un código como #1e3a8a.' });
     }
     setSaving(true);
     setMessage(null);
@@ -121,8 +121,8 @@ export default function BusinessForm() {
         <div>
           <label htmlFor="b-bg" className={labelClass}>Color de fondo (celular)</label>
           <div className="flex items-center gap-3">
-            <input id="b-bg" type="color" value={form.backgroundColor || '#2E7D32'} disabled={!canEdit} onChange={(e) => set('backgroundColor', e.target.value)} className="h-11 w-14 rounded-lg border border-[#000000]/10 bg-white p-1 cursor-pointer" />
-            <input aria-label="Color en hexadecimal" className={`${inputClass} max-w-32 uppercase`} value={form.backgroundColor} disabled={!canEdit} maxLength={7} onChange={(e) => set('backgroundColor', e.target.value)} placeholder="#2E7D32" />
+            <input id="b-bg" type="color" value={form.backgroundColor || '#1e3a8a'} disabled={!canEdit} onChange={(e) => set('backgroundColor', e.target.value)} className="h-11 w-14 rounded-lg border border-[#000000]/10 bg-white p-1 cursor-pointer" />
+            <input aria-label="Color en hexadecimal" className={`${inputClass} max-w-32 uppercase`} value={form.backgroundColor} disabled={!canEdit} maxLength={7} onChange={(e) => set('backgroundColor', e.target.value)} placeholder="#1e3a8a" />
             {canEdit && form.backgroundColor && (
               <button type="button" onClick={() => set('backgroundColor', '')} className="text-xs underline underline-offset-2 text-[#515154] hover:text-[#1D1D1F]">Usar el verde por defecto</button>
             )}

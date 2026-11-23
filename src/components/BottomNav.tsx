@@ -16,7 +16,7 @@ export default function BottomNav() {
 
   const tab = (active: boolean) =>
     `relative flex flex-1 items-center justify-center min-h-11 rounded-full transition-colors duration-200 active:scale-90 ${
-      active ? 'text-[#2E7D32]' : 'text-[#6E6E73] hover:text-[#1D1D1F]'
+      active ? 'text-[#1e3a8a]' : 'text-[#6E6E73] hover:text-[#1D1D1F]'
     }`;
   const icon = (active: boolean) => `w-6 h-6 transition-transform duration-200 ${active ? 'scale-110 [stroke-width:2.4]' : ''}`;
 
@@ -65,7 +65,7 @@ export default function BottomNav() {
         <span className="relative">
           <ShoppingCart className={icon(false)} aria-hidden="true" />
           {count > 0 && (
-            <span className="absolute -top-2 -right-2.5 min-w-4 h-4 px-1 rounded-full bg-[#2E7D32] text-white text-[10px] font-semibold flex items-center justify-center">
+            <span className="absolute -top-2 -right-2.5 min-w-4 h-4 px-1 rounded-full bg-[#1e3a8a] text-white text-[10px] font-semibold flex items-center justify-center">
               {count}
             </span>
           )}

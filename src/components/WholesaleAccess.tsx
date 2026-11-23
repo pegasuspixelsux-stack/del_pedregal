@@ -91,7 +91,7 @@ export default function WholesaleAccess({ glass, noModal }: { glass?: boolean; n
           <Heart className="w-3.5 h-3.5" />
           <span className="hidden md:inline">Favoritos</span>
           {favorites.length > 0 && (
-            <span className="min-w-4 h-4 px-1 rounded-full bg-[#2E7D32] text-white text-[10px] font-semibold flex items-center justify-center">
+            <span className="min-w-4 h-4 px-1 rounded-full bg-[#1e3a8a] text-white text-[10px] font-semibold flex items-center justify-center">
               {favorites.length}
             </span>
           )}
@@ -180,7 +180,7 @@ export default function WholesaleAccess({ glass, noModal }: { glass?: boolean; n
                 <input id="wa-code" value={code} onChange={(e) => setCode(e.target.value)} autoCapitalize="characters" autoComplete="off" spellCheck={false} placeholder="Contraseña o PIN" className={`${fieldClass} uppercase tracking-widest`} />
               </div>
               <label className="flex items-center gap-2 text-sm text-[#515154] cursor-pointer select-none">
-                <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="w-4 h-4 accent-[#2E7D32]" />
+                <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} className="w-4 h-4 accent-[#1e3a8a]" />
                 Recordar mi teléfono
               </label>
               {error && <p role="alert" className="text-xs text-red-600">{error}</p>}
@@ -190,7 +190,7 @@ export default function WholesaleAccess({ glass, noModal }: { glass?: boolean; n
             </form>
             <p className="text-xs text-[#86868B] mt-4">
               ¿No tenés acceso?{' '}
-              <Link href="/#contact" onClick={() => setOpen(false)} className="font-medium text-[#1D1D1F] underline underline-offset-2 hover:text-[#2E7D32]">
+              <Link href="/#contact" onClick={() => setOpen(false)} className="font-medium text-[#1D1D1F] underline underline-offset-2 hover:text-[#1e3a8a]">
                 Solicitalo aquí
               </Link>
               . Tras la aprobación y la configuración del pago, te enviamos tu contraseña.

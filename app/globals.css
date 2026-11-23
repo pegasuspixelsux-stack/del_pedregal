@@ -58,9 +58,9 @@ html {
   .on-green textarea {
     color: #1d1d1f;
   }
-  .on-green li span[class*="bg-[#2E7D32]"] {
+  .on-green li span[class*="bg-[#1e3a8a]"] {
     background: #fff;
-    color: #2e7d32;
+    color: #1e3a8a;
   }
   /* A white card inside an on-green section keeps the normal dark colors */
   .on-green .form-card {
@@ -112,9 +112,9 @@ html {
   .on-green-md textarea {
     color: #1d1d1f;
   }
-  .on-green-md li span[class*="bg-[#2E7D32]"] {
+  .on-green-md li span[class*="bg-[#1e3a8a]"] {
     background: #fff;
-    color: #2e7d32;
+    color: #1e3a8a;
   }
   /* A white card inside an on-green section keeps the normal dark colors */
   .on-green-md .form-card {

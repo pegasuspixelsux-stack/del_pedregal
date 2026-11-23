@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: '/opengraph',
-    siteName: 'Mercado de Carnes',
+    siteName: 'Agua Del Pedregal',
     title: SHARE_TITLE,
     description: SHARE_DESCRIPTION,
     images: [{ url: SHARE_IMAGE, width: SHARE_IMAGE_WIDTH, height: SHARE_IMAGE_HEIGHT, alt: SHARE_IMAGE_ALT, type: 'image/jpeg' }],
@@ -37,11 +37,11 @@ const benefits = [
  */
 export default function OpenGraphPage() {
   return (
-    <div className="bg-[var(--brand-bg,#2E7D32)] text-white font-sans antialiased">
+    <div className="bg-[var(--brand-bg,#1e3a8a)] text-white font-sans antialiased">
       {/* Hero: on a phone one tall column; from lg up a 1440 x 1440 px SQUARE with square corners, centered (it is the flyer
           that gets screenshotted). Everything inside is sized in cqw (1cqw = 1% of the square). */}
       <main className="min-h-[100vh] min-h-[100svh] lg:min-h-0 flex items-center justify-center lg:justify-start lg:bg-[#0B1F10] lg:overflow-x-auto">
-        <div className="w-full lg:w-[1440px] lg:h-[1440px] lg:shrink-0 lg:mx-auto lg:[container-type:size] lg:bg-[var(--brand-bg,#2E7D32)] lg:overflow-hidden">
+        <div className="w-full lg:w-[1440px] lg:h-[1440px] lg:shrink-0 lg:mx-auto lg:[container-type:size] lg:bg-[var(--brand-bg,#1e3a8a)] lg:overflow-hidden">
           <div className="w-full lg:h-full max-w-[1280px] lg:max-w-none mx-auto px-6 md:px-10 lg:px-[11cqw] pt-8 lg:py-[11cqw] grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_39.4cqw] gap-6 lg:gap-[2.5cqw] items-center">
             {/* Left column: logo, heading, support text, benefits */}
             <div className="lg:h-full lg:flex lg:flex-col lg:justify-center lg:gap-[5.2cqw]">

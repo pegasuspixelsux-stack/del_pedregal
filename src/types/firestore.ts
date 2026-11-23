@@ -292,7 +292,7 @@ export interface BusinessSettings {
   heroHeading: string;
   /** Paragraph under the hero heading (empty = default). */
   heroText: string;
-  /** Brand / background color on phones, hex like #2E7D32 (empty = default green). */
+  /** Brand / background color on phones, hex like #1e3a8a (empty = default blue). */
   backgroundColor: string;
 }
 

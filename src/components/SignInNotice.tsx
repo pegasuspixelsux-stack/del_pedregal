@@ -14,7 +14,7 @@ export default function SignInNotice() {
         <p className="font-medium">Para hacer un pedido ingresá como cliente.</p>
         <p className="text-[#515154] font-light">
           Los pedidos son solo para clientes con perfil. ¿Todavía no sos cliente?{' '}
-          <Link href="/#contact" className="font-medium text-[#1D1D1F] underline underline-offset-2 hover:text-[#2E7D32]">
+          <Link href="/#contact" className="font-medium text-[#1D1D1F] underline underline-offset-2 hover:text-[#1e3a8a]">
             Solicitá tu acceso aquí
           </Link>
           . Tras la aprobación y la configuración del pago, Fresco te envía tu contraseña.

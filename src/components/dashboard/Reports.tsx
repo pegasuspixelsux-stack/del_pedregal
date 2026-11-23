@@ -307,7 +307,7 @@ export default function Reports() {
                       <td className={`${td} hidden sm:table-cell`}>
                         <div className="h-2 rounded-full bg-[#F5F5F7]">
                           <div
-                            className="h-2 rounded-full bg-[#2E7D32]"
+                            className="h-2 rounded-full bg-[#1e3a8a]"
                             style={{ width: `${buckets.max ? (r.total / buckets.max) * 100 : 0}%` }}
                           />
                         </div>

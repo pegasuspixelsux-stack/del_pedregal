@@ -112,7 +112,7 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-[#FBFBFD] text-[#1D1D1F] font-sans antialiased">
       {/* Desktop sidebar */}
-      <aside className="hidden lg:block fixed inset-y-0 left-0 w-64 bg-[var(--brand-bg,#2E7D32)] text-white">
+      <aside className="hidden lg:block fixed inset-y-0 left-0 w-64 bg-[var(--brand-bg,#1e3a8a)] text-white">
         {sidebar}
       </aside>
 
@@ -125,7 +125,7 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
           }`}
         />
         <aside
-          className={`absolute left-0 top-0 h-full w-72 bg-[var(--brand-bg,#2E7D32)] text-white shadow-2xl transition-transform duration-300 ${
+          className={`absolute left-0 top-0 h-full w-72 bg-[var(--brand-bg,#1e3a8a)] text-white shadow-2xl transition-transform duration-300 ${
             menuOpen ? 'translate-x-0' : '-translate-x-full'
           }`}
         >

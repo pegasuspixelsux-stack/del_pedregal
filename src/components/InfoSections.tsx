@@ -149,7 +149,7 @@ export default function InfoSections() {
   return (
     <>
       {/* --- WHO WE ARE --- */}
-      <section id="vision" className={`on-green on-green-md pt-0 ${openVision ? 'pb-14' : 'pb-0'} md:py-28 md:bg-[var(--brand-bg,#2E7D32)] max-md:px-6 max-md:max-w-[1440px] max-md:mx-auto max-md:mt-2 max-md:py-1`}>
+      <section id="vision" className={`on-green on-green-md pt-0 ${openVision ? 'pb-14' : 'pb-0'} md:py-28 md:bg-[var(--brand-bg,#1e3a8a)] max-md:px-6 max-md:max-w-[1440px] max-md:mx-auto max-md:mt-2 max-md:py-1`}>
         <div className="md:max-w-[1440px] md:mx-auto md:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div className="md:space-y-6 [container-type:inline-size]">
             <h2 className="hidden md:block text-xs uppercase tracking-widest text-[#515154] font-semibold">Quiénes somos</h2>
@@ -236,7 +236,7 @@ export default function InfoSections() {
       </section>
 
       {/* --- CALL TO ACTION & CONTACT FORM --- */}
-      <section id="contact" className={`on-green on-green-md ${openContact ? 'pt-0 pb-12' : 'py-0'} md:py-44 md:bg-[var(--brand-bg,#2E7D32)] max-md:bg-transparent max-md:mt-2 max-md:border-0 max-md:py-1`}>
+      <section id="contact" className={`on-green on-green-md ${openContact ? 'pt-0 pb-12' : 'py-0'} md:py-44 md:bg-[var(--brand-bg,#1e3a8a)] max-md:bg-transparent max-md:mt-2 max-md:border-0 max-md:py-1`}>
         <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
           {/* Left Column: wholesale pitch + company data */}
@@ -266,7 +266,7 @@ export default function InfoSections() {
               <ul className="space-y-5">
                 {ORDER_BENEFITS.map((b) => (
                   <li key={b.title} className="flex gap-3.5">
-                    <span className="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-[#2E7D32] text-white flex items-center justify-center">
+                    <span className="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-[#1e3a8a] text-white flex items-center justify-center">
                       <Check className="w-3.5 h-3.5" aria-hidden="true" />
                     </span>
                     <div>
