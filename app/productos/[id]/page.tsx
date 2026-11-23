@@ -95,7 +95,7 @@ export default async function ItemPage({ params }: Props) {
 
   return (
     <div className="relative min-h-screen bg-[#FBFBFD] max-md:bg-[#172554] text-[#1D1D1F] font-sans antialiased">
-      <header className="absolute inset-x-0 top-0 z-30 text-white md:static md:text-[#1D1D1F] md:border-b md:border-[#000000]/5 md:bg-[#FBFBFD]">
+      <header className="relative z-30 max-md:bg-[#1e3a8a] text-white md:static md:text-[#1D1D1F] md:border-b md:border-[#000000]/5 md:bg-[#FBFBFD]">
         <ItemTopBar />
       </header>
 
@@ -109,19 +109,18 @@ export default async function ItemPage({ params }: Props) {
               variant="gallery"
               sizes="100vw"
               priority
-              className={`object-contain px-10 pt-28 pb-8 ${inStock ? '' : 'opacity-50 grayscale'}`}
+              className={`object-contain px-10 pt-16 pb-8 ${inStock ? '' : 'opacity-50 grayscale'}`}
             />
           )}
-          <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-[color-mix(in_srgb,#1e3a8a_92%,transparent)] from-25% via-[color-mix(in_srgb,#1e3a8a_50%,transparent)] via-55% to-transparent" aria-hidden="true" />
           <Link
             href="/"
-            className="absolute top-[6.75rem] left-4 z-10 inline-flex items-center gap-2 text-sm font-medium text-[#1e3a8a]"
+            className="absolute top-4 left-4 z-10 inline-flex items-center gap-2 text-sm font-medium text-[#1e3a8a]"
           >
             <ArrowLeft className="w-4 h-4" aria-hidden="true" /> Inicio
           </Link>
-          <FavoriteButton productId={String(item.id)} title={item.title} className="absolute top-[6.75rem] right-4 w-10 h-10 z-10" />
+          <FavoriteButton productId={String(item.id)} title={item.title} className="absolute top-3 right-4 w-10 h-10 z-10" />
           {!inStock && (
-            <span className="absolute top-32 left-4 z-10 bg-black/80 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
+            <span className="absolute top-14 left-4 z-10 bg-black/80 text-white text-xs font-semibold px-3 py-1.5 rounded-full">
               Sin stock
             </span>
           )}
