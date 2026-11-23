@@ -93,7 +93,7 @@ export default function FrescoHome({
             <h1>
               {/* White version of the blue logo artwork */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo-delpedregal.png" alt="Del Pedregal" fetchPriority="high" decoding="async" className="mx-auto h-auto w-[min(50vw,203px)] md:w-[min(22vw,260px)] brightness-0 invert drop-shadow-lg" />
+              <img src="/logo-delpedregal.png" alt="Del Pedregal" fetchPriority="high" decoding="async" className="mx-auto h-auto w-[min(45vw,183px)] md:w-[min(22vw,260px)] brightness-0 invert drop-shadow-lg" />
             </h1>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/Dosbidones-tapa-azul.png" fetchPriority="high" decoding="async" alt="" aria-hidden="true" className="pointer-events-none relative -translate-y-[10%] mt-4 h-[50svh] md:h-[55svh] w-auto max-w-[90%] object-contain drop-shadow-2xl" />
