@@ -90,7 +90,7 @@ export default function FrescoHome({
       </header>
 
       <div className="max-w-[1440px] mx-auto px-0 md:px-6 pt-0 md:pt-4">
-        <section data-home-hero className="relative w-full h-screen h-[100svh] flex flex-col items-center justify-start max-md:rounded-none overflow-hidden rounded-3xl border-0 bg-[radial-gradient(circle_at_50%_40%,#ef4444_0%,#b91c1c_45%,#7f1d1d_100%)] max-md:bg-[radial-gradient(circle_at_50%_40%,#3b82f6_0%,#1d4ed8_45%,#1e3a8a_100%)] text-white">
+        <section data-home-hero className="relative w-full h-screen h-[100svh] max-md:h-[90svh] flex flex-col items-center justify-start max-md:rounded-none overflow-hidden rounded-3xl border-0 bg-[radial-gradient(circle_at_50%_40%,#ef4444_0%,#b91c1c_45%,#7f1d1d_100%)] max-md:bg-[radial-gradient(circle_at_50%_40%,#3b82f6_0%,#1d4ed8_45%,#1e3a8a_100%)] text-white">
           {/* Bottom shade: deeper red toward the bottom edge */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#450a0a] max-md:from-[#172554] to-transparent" />
           {/* Desktop only: the logo on the right column, over the overlay */}

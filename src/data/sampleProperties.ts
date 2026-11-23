@@ -7,7 +7,7 @@ type Sample = Omit<PropertyInput, 'agentId'>;
  * (filtro en el catálogo). Los precios son provisorios (pesos uruguayos por unidad, `price` = minorista,
  * `wholesalePrice` = mayorista): ajustalos desde el panel.
  */
-function sample(title: string, category: string, price: number, wholesale: number, description: string): Sample {
+function sample(title: string, category: string, price: number, wholesale: number, image: string, description: string): Sample {
   return {
     title,
     description,
@@ -23,7 +23,7 @@ function sample(title: string, category: string, price: number, wholesale: numbe
     currency: 'UYU',
     location: { city: '', country: '' },
     specs: { bedrooms: 0, bathrooms: 0, areaM2: 0 },
-    photos: [{ url: '/Dosbidones-tapa-azul.png' }],
+    photos: [{ url: image }],
     deliveryAreas: ['Maldonado'],
     status: 'active',
   };
@@ -31,8 +31,8 @@ function sample(title: string, category: string, price: number, wholesale: numbe
 
 /** Los productos de muestra del sitio (el botón "Importar productos de muestra" carga estos). */
 export const sampleProperties: Sample[] = [
-  sample('Del Pedregal 600 ml', 'agua-600ml', 40, 32, 'Agua mineral natural sin gas, botella individual de 600 ml.'),
-  sample('Del Pedregal 1 L', 'agua-1l', 60, 48, 'Agua mineral natural sin gas, botella de 1 litro.'),
-  sample('Del Pedregal 6 L', 'agua-6l', 150, 125, 'Agua mineral natural sin gas, botellón de 6 litros.'),
-  sample('Del Pedregal 20 L', 'agua-20l', 280, 240, 'Agua mineral natural sin gas, bidón retornable de 20 litros.'),
+  sample('Del Pedregal 600 ml', 'agua-600ml', 40, 32, '/image_bottles/bidon-1l.png', 'Agua mineral natural sin gas, botella individual de 600 ml.'),
+  sample('Del Pedregal 1 L', 'agua-1l', 60, 48, '/image_bottles/bidon-1l.png', 'Agua mineral natural sin gas, botella de 1 litro.'),
+  sample('Del Pedregal 6 L', 'agua-6l', 150, 125, '/image_bottles/bidon-6l.png', 'Agua mineral natural sin gas, botellón de 6 litros.'),
+  sample('Del Pedregal 20 L', 'agua-20l', 280, 240, '/image_bottles/bidon-20l.png', 'Agua mineral natural sin gas, bidón retornable de 20 litros.'),
 ];
