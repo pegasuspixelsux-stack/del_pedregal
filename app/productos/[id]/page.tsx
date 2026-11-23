@@ -94,7 +94,7 @@ export default async function ItemPage({ params }: Props) {
     }));
 
   return (
-    <div className="relative min-h-screen bg-[#FBFBFD] max-md:bg-[#450a0a] text-[#1D1D1F] font-sans antialiased">
+    <div className="relative min-h-screen bg-[#FBFBFD] max-md:bg-[#172554] text-[#1D1D1F] font-sans antialiased">
       <header className="absolute inset-x-0 top-0 z-30 text-white md:static md:text-[#1D1D1F] md:border-b md:border-[#000000]/5 md:bg-[#FBFBFD]">
         <ItemTopBar />
       </header>
@@ -109,10 +109,10 @@ export default async function ItemPage({ params }: Props) {
               variant="gallery"
               sizes="100vw"
               priority
-              className={`object-cover ${inStock ? '' : 'opacity-50 grayscale'}`}
+              className={`object-contain px-10 pt-28 pb-8 ${inStock ? '' : 'opacity-50 grayscale'}`}
             />
           )}
-          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[color-mix(in_srgb,#450a0a_92%,transparent)] from-25% via-[color-mix(in_srgb,#450a0a_50%,transparent)] via-55% to-transparent" aria-hidden="true" />
+          <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-[color-mix(in_srgb,#1e3a8a_92%,transparent)] from-25% via-[color-mix(in_srgb,#1e3a8a_50%,transparent)] via-55% to-transparent" aria-hidden="true" />
           <Link
             href="/productos"
             className="absolute top-[6.75rem] left-4 z-10 inline-flex items-center gap-2 text-sm font-medium text-white bg-black/40 backdrop-blur px-3 py-1.5 rounded-full"
@@ -169,7 +169,7 @@ export default async function ItemPage({ params }: Props) {
               variant="gallery"
               sizes="(min-width: 768px) 50vw, 100vw"
               priority
-              className={`object-cover ${inStock ? '' : 'opacity-50 grayscale'}`}
+              className={`object-contain p-8 ${inStock ? '' : 'opacity-50 grayscale'}`}
             />
           )}
           <FavoriteButton productId={String(item.id)} title={item.title} className="absolute top-4 right-4 w-10 h-10 z-10" />

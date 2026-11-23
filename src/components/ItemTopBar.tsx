@@ -7,7 +7,6 @@ import MobileNavMenu from '@/src/components/MobileNavMenu';
 import CartButton from '@/src/components/CartButton';
 import WholesaleAccess from '@/src/components/WholesaleAccess';
 import SearchModal from '@/src/components/SearchModal';
-import BrandName from '@/src/components/BrandName';
 import { useCategories } from '@/src/hooks/useCategories';
 
 // Same look as the bottom icon bar (BottomNav): white rounded bar, thin border, soft shadow, grey icons.
@@ -24,7 +23,11 @@ export default function ItemTopBar() {
       <div className={pill}>
         <MobileNavMenu align="left" always />
       </div>
-      <Link href="/" className="font-semibold text-base sm:text-lg tracking-tight"><BrandName onDark /></Link>
+      <Link href="/" aria-label="Del Pedregal, inicio" className="shrink-0">
+        {/* White version over the photo on phones; the original blue on the light desktop bar. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/image_bottles/logo-delpedregal.png" alt="Del Pedregal" className="h-14 w-auto brightness-0 invert drop-shadow md:brightness-100 md:invert-0 md:drop-shadow-none" />
+      </Link>
       <div className={pill}>
         <button
           type="button"
