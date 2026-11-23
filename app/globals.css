@@ -25,11 +25,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Phones: green behind the page, so the Safari top bar and overscroll area are green, not white. */
+/* Phones: blue behind the page, so the Safari top bar and overscroll area are blue, not dark. */
 @media (max-width: 767px) {
   html,
   body {
-    background: #450a0a;
+    background: #172554;
   }
 }
 

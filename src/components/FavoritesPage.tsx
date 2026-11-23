@@ -91,7 +91,7 @@ export default function FavoritesPage() {
   const change = (id: string, delta: number) => setQty((q) => ({ ...q, [id]: Math.max(1, (q[id] ?? 1) + delta) }));
 
   return (
-    <div className="min-h-screen bg-[#FBFBFD] max-md:bg-[#450a0a] text-[#1D1D1F] font-sans antialiased flex flex-col">
+    <div className="min-h-screen bg-[#FBFBFD] max-md:bg-[#172554] text-[#1D1D1F] font-sans antialiased flex flex-col">
       <header className="border-b border-[#000000]/5 bg-[#FBFBFD]">
         <div className="max-w-[1440px] mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="font-semibold text-sm min-[420px]:text-base sm:text-lg tracking-tight"><BrandName /></Link>
