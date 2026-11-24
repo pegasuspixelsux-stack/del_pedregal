@@ -10,7 +10,7 @@ import { formatMoney, formatQuantity, mergeCategories, withUnitSuffix } from '@/
 import BuyBox from '@/src/components/BuyBox';
 import ItemPriceView from '@/src/components/ItemPriceView';
 import FavoriteButton from '@/src/components/FavoriteButton';
-import ItemTopBar from '@/src/components/ItemTopBar';
+import SiteHeader from '@/src/components/SiteHeader';
 import SimilarItems, { type SimilarItem } from '@/src/components/SimilarItems';
 import PropertyImage from '@/src/components/PropertyImage';
 import HeroArrow from '@/src/components/HeroArrow';
@@ -98,11 +98,9 @@ export default async function ItemPage({ params }: Props) {
 
   return (
     <div className="relative min-h-screen bg-[#FBFBFD] max-md:bg-[#172554] text-[#1D1D1F] font-sans antialiased">
-      <header className="relative z-30 max-md:bg-[#1e3a8a] text-white md:static md:text-[#1D1D1F] md:border-b md:border-[#000000]/5 md:bg-[#FBFBFD]">
-        <ItemTopBar />
-      </header>
+      <SiteHeader solid />
 
-      <main className="max-md:bg-[#FBFBFD] max-w-[1440px] mx-auto px-6 pt-4 pb-0 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-16 items-start">
+      <main className="max-md:bg-[#FBFBFD] max-w-[1440px] mx-auto px-6 pt-4 pb-0 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-16 md:items-center">
         {/* Mobile hero: the photo in an inset card (Inicio and favorites inside it), product info below it */}
         <SwipeSection prevHref={prevHref} nextHref={nextHref} className="md:hidden relative aspect-square w-full overflow-hidden rounded-3xl bg-white border border-[#000000]/5 shadow-sm">
           {photo && (

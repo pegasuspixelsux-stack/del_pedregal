@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useClient } from '@/src/context/ClientContext';
 import { boxDescription, optionPrice, saleOptions, type SaleSource } from '@/src/utils/pricing';
 import { formatMoney, pricingModeLabels, pricingSuffix } from '@/src/utils/format';
@@ -74,15 +73,7 @@ export default function ItemPriceView({ pricing, categoryId, glass }: { pricing:
             Precio {level.name}
           </span>
         </div>
-      ) : glass ? null : (
-        <div className={`col-span-2 rounded-2xl ${card} p-4`}>
-          <dt className={`text-xs uppercase tracking-wider ${muted} font-semibold`}>Mayorista</dt>
-          <dd className={`mt-1 text-sm ${muted}`}>Ingresá con “Acceso mayoristas” para ver tu precio por caja o por unidad</dd>
-          <Link href="/#contact" className={`inline-block mt-2 text-xs underline underline-offset-2 ${muted} ${glass ? 'hover:text-white' : 'hover:text-[#1D1D1F]'}`}>
-            Conseguí precios mayoristas
-          </Link>
-        </div>
-      )}
+      ) : null}
     </dl>
   );
 }
