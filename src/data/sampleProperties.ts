@@ -1,4 +1,5 @@
 import type { PropertyInput } from '../types/firestore';
+import { DEFAULT_CATEGORY_ID } from '../utils/format';
 
 type Sample = Omit<PropertyInput, 'agentId'>;
 
@@ -31,8 +32,8 @@ function sample(title: string, category: string, price: number, wholesale: numbe
 
 /** Los productos de muestra del sitio (el botón "Importar productos de muestra" carga estos). */
 export const sampleProperties: Sample[] = [
-  sample('Del Pedregal 600 ml', 'agua-600ml', 40, 32, '/image_bottles/bidon-1l.png', 'Agua mineral natural sin gas, botella individual de 600 ml.'),
-  sample('Del Pedregal 1 L', 'agua-1l', 60, 48, '/image_bottles/bidon-1l.png', 'Agua mineral natural sin gas, botella de 1 litro.'),
-  sample('Del Pedregal 6 L', 'agua-6l', 150, 125, '/image_bottles/bidon-6l.png', 'Agua mineral natural sin gas, botellón de 6 litros.'),
-  sample('Del Pedregal 20 L', 'agua-20l', 280, 240, '/image_bottles/bidon-20l.png', 'Agua mineral natural sin gas, bidón retornable de 20 litros.'),
+  sample('Del Pedregal 600 ml', DEFAULT_CATEGORY_ID, 40, 32, '/image_bottles/bidon-1l.png', 'Agua mineral natural sin gas, botella individual de 600 ml.'),
+  sample('Del Pedregal 1 L', DEFAULT_CATEGORY_ID, 60, 48, '/image_bottles/bidon-1l.png', 'Agua mineral natural sin gas, botella de 1 litro.'),
+  sample('Del Pedregal 6 L', DEFAULT_CATEGORY_ID, 150, 125, '/image_bottles/bidon-6l.png', 'Agua mineral natural sin gas, botellón de 6 litros.'),
+  sample('Del Pedregal 20 L', DEFAULT_CATEGORY_ID, 280, 240, '/image_bottles/bidon-20l.png', 'Agua mineral natural sin gas, bidón retornable de 20 litros.'),
 ];

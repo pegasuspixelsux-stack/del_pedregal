@@ -42,5 +42,5 @@ export function useCategories() {
     await reload();
   };
 
-  return { categories, labelFor, loading, error, add, remove };
+  return { categories, labelFor, loading, error, add, remove, reload };
 }

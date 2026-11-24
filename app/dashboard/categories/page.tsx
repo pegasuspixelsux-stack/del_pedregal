@@ -6,10 +6,14 @@ import { ArrowUpRight, Plus, Trash2 } from 'lucide-react';
 import { useProperties } from '@/src/hooks/useProperties';
 import { useCategories } from '@/src/hooks/useCategories';
 import { PageHeader, cardClass, inputClass } from '@/src/components/dashboard/ui';
+import { resetCategories } from '@/src/services/dbService';
+import { DEFAULT_CATEGORY_NAME } from '@/src/utils/format';
 
 export default function CategoriesPage() {
   const { items, loading, error, hasMore } = useProperties(100, true);
-  const { categories, add, remove, error: categoriesError } = useCategories();
+  const { categories, add, remove, reload, error: categoriesError } = useCategories();
+  const [resetting, setResetting] = useState(false);
+  const [confirmReset, setConfirmReset] = useState(false);
   const [name, setName] = useState('');
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ ok: boolean; text: string } | null>(null);
@@ -35,6 +39,30 @@ export default function CategoriesPage() {
       });
     } finally {
       setSaving(false);
+    }
+  };
+
+  const onReset = async () => {
+    setResetting(true);
+    setMessage(null);
+    try {
+      const r = await resetCategories();
+      await reload();
+      setMessage({
+        ok: r.failedProducts.length === 0,
+        text:
+          `Listo: se eliminaron ${r.deletedCategories} categorías y ${r.movedProducts} productos pasaron a “${DEFAULT_CATEGORY_NAME}”.` +
+          (r.failedProducts.length ? ` No se pudieron mover: ${r.failedProducts.join(', ')}.` : ''),
+      });
+    } catch (err) {
+      const code = (err as { code?: string }).code;
+      setMessage({
+        ok: false,
+        text: code === 'permission-denied' ? 'Permiso denegado. Iniciá sesión como administrador.' : 'No se pudieron reiniciar las categorías.',
+      });
+    } finally {
+      setResetting(false);
+      setConfirmReset(false);
     }
   };
 
@@ -74,6 +102,20 @@ export default function CategoriesPage() {
           <Plus className="w-4 h-4" /> {saving ? 'Agregando…' : 'Agregar categoría'}
         </button>
       </form>
+
+      <div className="mb-6 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={() => (confirmReset ? void onReset() : setConfirmReset(true))}
+          disabled={resetting}
+          className="text-xs font-medium px-5 py-3 rounded-full border border-red-300 text-red-600 hover:bg-red-50 disabled:opacity-50"
+        >
+          {resetting ? 'Reiniciando…' : confirmReset ? 'Confirmar: borrar todas y mover productos' : `Reiniciar categorías (solo “${DEFAULT_CATEGORY_NAME}”)`}
+        </button>
+        {confirmReset && !resetting && (
+          <button type="button" onClick={() => setConfirmReset(false)} className="text-xs text-[#515154] underline">Cancelar</button>
+        )}
+      </div>
 
       {message && (
         <p role={message.ok ? 'status' : 'alert'} className={`text-sm mb-4 ${message.ok ? 'text-green-700' : 'text-red-600'}`}>

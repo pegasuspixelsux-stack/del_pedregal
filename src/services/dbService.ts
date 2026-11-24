@@ -24,7 +24,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { sampleProperties } from '../data/sampleProperties';
-import { USD_TO_UYU } from '../utils/format';
+import { DEFAULT_CATEGORY_ID, DEFAULT_CATEGORY_NAME, USD_TO_UYU } from '../utils/format';
 import { DELIVERY_AREAS, PRICING_MODES } from '../types/firestore';
 import type {
   Category,
@@ -93,7 +93,7 @@ function toProperty(id: string, d: DocumentData): Property {
     id,
     title: d.title ?? '',
     description: d.description ?? '',
-    type: typeof d.type === 'string' && d.type ? d.type : 'fruit',
+    type: typeof d.type === 'string' && d.type ? d.type : DEFAULT_CATEGORY_ID,
     weight: typeof d.weight === 'number' ? d.weight : undefined,
     unit: typeof d.unit === 'string' ? d.unit : undefined,
     inStock: d.inStock !== false,
@@ -385,6 +385,44 @@ export async function addCategory(name: string, existing: Category[]): Promise<v
 
 export async function deleteCategory(id: string): Promise<void> {
   await deleteDoc(doc(requireDb(), CATEGORIES, id));
+}
+
+export interface ResetCategoriesResult {
+  deletedCategories: number;
+  movedProducts: number;
+  failedProducts: string[];
+}
+
+/**
+ * One-time cleanup: deletes every category document, creates the single category "Agua Mineral Embotellada"
+ * and moves every product to it. Needs a signed-in admin (security rules apply). Products are updated one by
+ * one so a single invalid legacy document cannot block the rest.
+ */
+export async function resetCategories(): Promise<ResetCategoriesResult> {
+  const firestore = requireDb();
+  const catSnap = await getDocs(collection(firestore, CATEGORIES));
+  let deletedCategories = 0;
+  for (const d of catSnap.docs) {
+    if (d.id === DEFAULT_CATEGORY_ID) continue; // recreated below
+    await deleteDoc(d.ref);
+    deletedCategories++;
+  }
+  await deleteDoc(doc(firestore, CATEGORIES, DEFAULT_CATEGORY_ID)).catch(() => undefined); // updates are not allowed, so replace it
+  await setDoc(doc(firestore, CATEGORIES, DEFAULT_CATEGORY_ID), { name: DEFAULT_CATEGORY_NAME, createdAt: serverTimestamp() });
+
+  const propSnap = await getDocs(collection(firestore, PROPERTIES));
+  let movedProducts = 0;
+  const failedProducts: string[] = [];
+  for (const d of propSnap.docs) {
+    if (d.data().type === DEFAULT_CATEGORY_ID) continue;
+    try {
+      await updateDoc(d.ref, { type: DEFAULT_CATEGORY_ID, updatedAt: serverTimestamp() });
+      movedProducts++;
+    } catch {
+      failedProducts.push(String(d.data().title ?? d.id));
+    }
+  }
+  return { deletedCategories, movedProducts, failedProducts };
 }
 
 /**

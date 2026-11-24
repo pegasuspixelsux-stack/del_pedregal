@@ -10,7 +10,7 @@ import SearchModal from '@/src/components/SearchModal';
 import HomeAccessButton from '@/src/components/HomeAccessButton';
 import { typeLabels } from '@/src/utils/format';
 
-const SIZE_CATEGORIES = ['agua-600ml', 'agua-1l', 'agua-6l', 'agua-20l'].map((id) => ({ id, label: typeLabels[id] }));
+const SIZE_CATEGORIES = Object.entries(typeLabels).map(([id, label]) => ({ id, label }));
 
 /**
  * The site's top navigation, shared by the homepage and the product pages: a blue stripe, then (phones) burger, access

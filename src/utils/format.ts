@@ -94,24 +94,12 @@ export function formatItemPricing(
   return { primary };
 }
 
+/** Id of the only category: every product belongs to it. */
+export const DEFAULT_CATEGORY_ID = 'agua-mineral-embotellada';
+export const DEFAULT_CATEGORY_NAME = 'Agua Mineral Embotellada';
+
 export const typeLabels: Record<string, string> = {
-  'agua-600ml': '600 ml',
-  'agua-1l': '1 L',
-  'agua-6l': '6 L',
-  'agua-20l': '20 L',
-  'cortes-parrilla-alta-gama': 'Cortes de Parrilla y Alta Gama',
-  'cortes-asadores-versatiles': 'Cortes Asadores y Versátiles',
-  'cortes-cocina-rotiseria': 'Cortes para Cocina, Rotisería y Minutas',
-  'achuras-complementos': 'Achuras y Complementos',
-  fruit: 'Frutas',
-  vegetable: 'Verduras',
-  leafy: 'Hojas verdes',
-  tropical: 'Tropicales',
-  'melones-y-sandias': 'Melones y Sandías',
-  'aromaticas-y-hierbas': 'Aromáticas y Hierbas',
-  hongos: 'Hongos',
-  'tuberculos-y-raices': 'Tubérculos y Raíces',
-  'otros-vegetales': 'Otros vegetales',
+  [DEFAULT_CATEGORY_ID]: DEFAULT_CATEGORY_NAME,
 };
 
 /** Lower-case, no accents, letters and digits only: "Hojas verdes" -> "hojasverdes". */

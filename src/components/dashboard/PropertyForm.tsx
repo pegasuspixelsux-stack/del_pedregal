@@ -7,7 +7,7 @@ import { useAuth } from '../../context/AuthContext';
 import ImageUpload from '../ImageUpload';
 import PropertyImage from '../PropertyImage';
 import { DELIVERY_AREAS, PRICING_MODES, type DeliveryArea, type PricingMode, type Property, type PropertyInput, type PropertyPhoto } from '../../types/firestore';
-import { unitLabels, weightUnits, pricingModeLabels, pricingSuffix } from '../../utils/format';
+import { DEFAULT_CATEGORY_ID, unitLabels, weightUnits, pricingModeLabels, pricingSuffix } from '../../utils/format';
 import { useCategories } from '../../hooks/useCategories';
 import { cardClass, inputClass, labelClass } from './ui';
 
@@ -49,7 +49,7 @@ const emptyForm: FormState = {
   boxPrice: '',
   unitPrice: '',
   deliveryAreas: ['Maldonado'],
-  category: 'fruit',
+  category: DEFAULT_CATEGORY_ID,
   inStock: true,
   featured: false,
   onSale: false,
