@@ -3,7 +3,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Check, CheckCheck, Printer, X } from 'lucide-react';
-import { getProperty, updateLeadDetails, updateLeadStatus } from '@/src/services/dbService';
+import { getProperty, setLeadDriver, updateLeadDetails, updateLeadStatus } from '@/src/services/dbService';
+import { useDrivers } from '@/src/hooks/useDrivers';
 import { getClient } from '@/src/services/pricingService';
 import { useBusiness } from '@/src/context/BusinessContext';
 import { PAYMENT_METHODS, paymentMethodLabels } from '@/src/types/firestore';
@@ -113,6 +114,24 @@ export default function OrderModal({
   const [shipping, setShipping] = useState(primary.shipping !== undefined ? String(primary.shipping) : '');
   const [busy, setBusy] = useState(false);
   const [feedback, setFeedback] = useState<{ ok: boolean; text: string } | null>(null);
+  const { drivers } = useDrivers();
+  const [driverId, setDriverId] = useState(() => group.find((l) => l.driverId)?.driverId ?? '');
+
+  /** Saves right away on every line of the order, so the load lists and reports see it. */
+  const assignDriver = async (id: string) => {
+    setBusy(true);
+    setFeedback(null);
+    try {
+      await Promise.all(group.map((l) => setLeadDriver(l.id, id || null)));
+      setDriverId(id);
+      setFeedback({ ok: true, text: id ? 'Repartidor asignado.' : 'Se quitó el repartidor.' });
+    } catch (err) {
+      const denied = (err as { code?: string }).code === 'permission-denied';
+      setFeedback({ ok: false, text: denied ? 'Permiso denegado. Publicá las reglas de Firestore actualizadas (firestore.rules).' : 'No se pudo asignar el repartidor.' });
+    } finally {
+      setBusy(false);
+    }
+  };
 
   // Product details (box weight, unit) and the client's billing profile.
   useEffect(() => {
@@ -392,6 +411,22 @@ export default function OrderModal({
                 </li>
               ))}
             </ul>
+          </div>
+
+          <div>
+            <label htmlFor="om-driver" className={labelClass}>Repartidor</label>
+            <select id="om-driver" className={inputClass} value={driverId} disabled={busy} onChange={(e) => void assignDriver(e.target.value)}>
+              <option value="">Sin asignar</option>
+              {drivers.filter((d) => d.active || d.id === driverId).map((d) => (
+                <option key={d.id} value={d.id}>
+                  {d.name}{d.zone ? ` · ${d.zone}` : ''}{d.active ? '' : ' (inactivo)'}
+                </option>
+              ))}
+              {driverId && !drivers.some((d) => d.id === driverId) && <option value={driverId}>Repartidor eliminado</option>}
+            </select>
+            {drivers.find((d) => d.id === driverId)?.route && (
+              <p className="text-xs text-[#515154] mt-1.5">Ruta: {drivers.find((d) => d.id === driverId)?.route}</p>
+            )}
           </div>
 
           <div className="grid sm:grid-cols-3 gap-3">

@@ -136,7 +136,9 @@ service cloud.firestore {
       allow update: if isAgent()
         && request.resource.data.diff(resource.data).affectedKeys()
              .hasOnly(['status', 'notes', 'assignedAgentId', 'quantity', 'unitPrice', 'message',
-                       'paymentMethod', 'taxRate', 'shipping'])
+                       'paymentMethod', 'taxRate', 'shipping', 'driverId'])
+        && (!('driverId' in request.resource.data)
+            || (request.resource.data.driverId is string && request.resource.data.driverId.size() <= 64))
         && request.resource.data.status in ['new', 'contacted', 'closed', 'completed']
         // Agents can correct an order before confirming it: quantity, price and the order details text.
         && (!('quantity' in request.resource.data)
@@ -156,6 +158,22 @@ service cloud.firestore {
                 && request.resource.data.shipping >= 0 && request.resource.data.shipping < 1000000))
         && (!('notes' in request.resource.data)
             || (request.resource.data.notes is string && request.resource.data.notes.size() <= 2000));
+    }
+
+    // -------------------------------------------------------------- drivers
+    // Delivery drivers with their zone and route. Staff read; only admins write.
+
+    match /drivers/{id} {
+      allow read: if isAgent();
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['name', 'phone', 'zone', 'route', 'active', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 100
+        && request.resource.data.phone is string && request.resource.data.phone.size() <= 50
+        && request.resource.data.zone is string && request.resource.data.zone.size() <= 120
+        && request.resource.data.route is string && request.resource.data.route.size() <= 1000
+        && request.resource.data.active is bool;
+      allow delete: if isAdmin();
     }
 
     // --------------------------------------------------------- price levels

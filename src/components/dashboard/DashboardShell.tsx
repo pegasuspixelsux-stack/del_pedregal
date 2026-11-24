@@ -16,6 +16,7 @@ import {
   PlusSquare,
   Settings,
   Tags,
+  Truck,
   UserCog,
   Users,
   X,
@@ -36,6 +37,7 @@ const nav: { href: string; label: string; icon: typeof Users; exact?: boolean; a
   { href: '/dashboard/productos', label: 'Productos', icon: Building2 },
   { href: '/dashboard/productos/new', label: 'Agregar producto', icon: PlusSquare },
   { href: '/dashboard/customers', label: 'Clientes', icon: Users },
+  { href: '/dashboard/repartidores', label: 'Repartidores', icon: Truck },
   // Staff / operators: add agents, change roles, deactivate accounts.
   { href: '/admin', label: 'Usuarios', icon: UserCog, adminOnly: true },
   { href: '/dashboard/settings', label: 'Ajustes', icon: Settings },

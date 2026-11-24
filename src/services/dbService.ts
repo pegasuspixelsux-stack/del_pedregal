@@ -29,6 +29,7 @@ import { DELIVERY_AREAS, PRICING_MODES } from '../types/firestore';
 import type {
   Category,
   DeliveryArea,
+  Driver,
   PricingMode,
   Lead,
   LeadChannel,
@@ -293,6 +294,7 @@ function toLead(id: string, d: DocumentData): Lead {
     shipping: typeof d.shipping === 'number' ? d.shipping : undefined,
     orderId: typeof d.orderId === 'string' && d.orderId ? d.orderId : undefined,
     clientId: d.clientId ?? undefined,
+    driverId: typeof d.driverId === 'string' && d.driverId ? d.driverId : undefined,
     createdAt: toMillis(d.createdAt),
   };
 }
@@ -337,6 +339,46 @@ export async function updateLeadDetails(
   }
 ): Promise<void> {
   await updateDoc(doc(requireDb(), LEADS, leadId), clean(data));
+}
+
+/** Assigns an order line to a driver; `null` removes the assignment. */
+export async function setLeadDriver(leadId: string, driverId: string | null): Promise<void> {
+  await updateDoc(doc(requireDb(), LEADS, leadId), { driverId: driverId ?? deleteField() });
+}
+
+// --------------------------------------------------------------- drivers
+
+const DRIVERS = 'drivers';
+
+function toDriver(id: string, d: DocumentData): Driver {
+  return {
+    id,
+    name: d.name ?? '',
+    phone: d.phone ?? '',
+    zone: d.zone ?? '',
+    route: d.route ?? '',
+    active: d.active !== false,
+    createdAt: toMillis(d.createdAt) || undefined,
+  };
+}
+
+export async function getDrivers(): Promise<Driver[]> {
+  const snap = await getDocs(collection(requireDb(), DRIVERS));
+  return snap.docs.map((d) => toDriver(d.id, d.data())).sort((a, b) => a.name.localeCompare(b.name, 'es'));
+}
+
+export type DriverInput = Omit<Driver, 'id' | 'createdAt'>;
+
+export async function createDriver(data: DriverInput): Promise<void> {
+  await addDoc(collection(requireDb(), DRIVERS), { ...data, createdAt: serverTimestamp() });
+}
+
+export async function updateDriver(id: string, data: DriverInput): Promise<void> {
+  await updateDoc(doc(requireDb(), DRIVERS, id), { ...data });
+}
+
+export async function deleteDriver(id: string): Promise<void> {
+  await deleteDoc(doc(requireDb(), DRIVERS, id));
 }
 
 /**

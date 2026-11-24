@@ -173,7 +173,25 @@ export interface Lead {
   shipping?: number;
   /** Firebase Auth uid of the client who placed the order, when signed in. */
   clientId?: string;
+  /** Delivery driver (drivers/{id}) the order is assigned to; the same on every line of an order. */
+  driverId?: string;
   createdAt: number;
+}
+
+// --------------------------------------------------------------- Drivers
+
+/** drivers/{id}: a delivery driver with their zone and route. Staff read; admins write. */
+export interface Driver {
+  id: string;
+  name: string;
+  phone: string;
+  /** Area they cover, e.g. "Punta del Este". */
+  zone: string;
+  /** Their usual route / stops, free text. */
+  route: string;
+  /** Inactive drivers cannot be assigned new orders but keep their history. */
+  active: boolean;
+  createdAt?: number;
 }
 
 // ---------------------------------------------------------- Price levels

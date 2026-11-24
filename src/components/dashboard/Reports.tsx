@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import { getLeadsBetween } from '@/src/services/dbService';
+import { useDrivers } from '@/src/hooks/useDrivers';
 import type { Lead, LeadStatus } from '@/src/types/firestore';
 import { dayKey, groupOrders, orderNumberOf, orderTotal, withoutPartialOrder, type OrderGroup } from '@/src/utils/orders';
 import { bucketKeyOf, bucketsOf, periodLabels, periodOf, shiftRef, type PeriodKind } from '@/src/utils/reportPeriods';
@@ -15,6 +16,7 @@ const KINDS: PeriodKind[] = ['day', 'week', 'month', 'year'];
 const STATUSES: LeadStatus[] = ['new', 'contacted', 'closed', 'completed'];
 
 const clientKeyOf = (g: OrderGroup) => g.primary.clientId || `name:${g.primary.clientName.trim().toLowerCase()}`;
+const driverKeyOf = (g: OrderGroup) => g.lines.find((l) => l.driverId)?.driverId ?? 'none';
 const clientNameOf = (g: OrderGroup) => g.primary.clientName.trim() || 'Sin nombre';
 
 interface Loaded {
@@ -28,6 +30,8 @@ export default function Reports() {
   const [kind, setKind] = useState<PeriodKind>('week');
   const [ref, setRef] = useState(() => dayKey(Date.now()));
   const [client, setClient] = useState('all');
+  const [driver, setDriver] = useState('all');
+  const { drivers, nameFor } = useDrivers();
   const [statuses, setStatuses] = useState<Set<LeadStatus>>(new Set(STATUSES));
   const [loaded, setLoaded] = useState<Loaded | null>(null);
 
@@ -63,8 +67,13 @@ export default function Reports() {
   }, [allOrders]);
 
   const orders = useMemo(
-    () => allOrders.filter((g) => statuses.has(g.status) && (client === 'all' || clientKeyOf(g) === client)),
-    [allOrders, statuses, client],
+    () => allOrders.filter(
+        (g) =>
+          statuses.has(g.status) &&
+          (client === 'all' || clientKeyOf(g) === client) &&
+          (driver === 'all' || driverKeyOf(g) === driver),
+      ),
+    [allOrders, statuses, client, driver],
   );
 
   const totals = useMemo(() => {
@@ -89,6 +98,19 @@ export default function Reports() {
     }
     return [...map.entries()].map(([key, v]) => ({ key, ...v })).sort((a, b) => b.total - a.total);
   }, [orders]);
+
+  const byDriver = useMemo(() => {
+    const map = new Map<string, { name: string; orders: number; lines: number; total: number }>();
+    for (const g of orders) {
+      const k = driverKeyOf(g);
+      const row = map.get(k) ?? { name: nameFor(k === 'none' ? undefined : k), orders: 0, lines: 0, total: 0 };
+      row.orders += 1;
+      row.lines += g.lines.length;
+      row.total += orderTotal(g.lines);
+      map.set(k, row);
+    }
+    return [...map.entries()].map(([key, v]) => ({ key, ...v })).sort((a, b) => b.total - a.total);
+  }, [orders, nameFor]);
 
   const buckets = useMemo(() => {
     const defs = bucketsOf(kind, period);
@@ -115,12 +137,13 @@ export default function Reports() {
   const exportCsv = () => {
     const esc = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`;
     const decimal = (n: number) => n.toFixed(2).replace('.', ',');
-    const header = ['Pedido', 'Fecha', 'Cliente', 'Teléfono', 'Estado', 'Productos', 'Total'];
+    const header = ['Pedido', 'Fecha', 'Cliente', 'Teléfono', 'Repartidor', 'Estado', 'Productos', 'Total'];
     const body = orders.map((g) => [
       orderNumberOf(g),
       new Date(g.createdAt).toLocaleString('es-UY'),
       clientNameOf(g),
       g.primary.phone,
+      nameFor(driverKeyOf(g) === 'none' ? undefined : driverKeyOf(g)),
       orderStatusLabels[g.status],
       g.lines.length,
       decimal(orderTotal(g.lines)),
@@ -202,6 +225,20 @@ export default function Reports() {
               ))}
             </select>
           </div>
+          <div className="min-w-48">
+            <label htmlFor="report-driver" className={labelClass}>
+              Repartidor
+            </label>
+            <select id="report-driver" value={driver} onChange={(e) => setDriver(e.target.value)} className={inputClass}>
+              <option value="all">Todos los repartidores</option>
+              <option value="none">Sin asignar</option>
+              {drivers.map((d) => (
+                <option key={d.id} value={d.id}>
+                  {d.name}
+                </option>
+              ))}
+            </select>
+          </div>
           <button
             type="button"
             onClick={exportCsv}
@@ -253,6 +290,35 @@ export default function Reports() {
               </div>
             ))}
           </div>
+
+          {/* By driver */}
+          <section className={`${cardClass} overflow-x-auto`} aria-label="Por repartidor">
+            <h2 className="px-5 pt-5 text-lg font-semibold tracking-tight">Por repartidor</h2>
+            {byDriver.length ? (
+              <table className="w-full mt-3">
+                <thead>
+                  <tr className="border-b border-[#000000]/5">
+                    <th className={th}>Repartidor</th>
+                    <th className={`${th} text-right`}>Pedidos</th>
+                    <th className={`${th} text-right`}>Productos</th>
+                    <th className={`${th} text-right`}>Total vendido</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#000000]/5">
+                  {byDriver.map((r) => (
+                    <tr key={r.key}>
+                      <td className={`${td} font-medium`}>{r.name}</td>
+                      <td className={tdNum}>{r.orders}</td>
+                      <td className={tdNum}>{r.lines}</td>
+                      <td className={`${tdNum} font-semibold`}>{formatMoney(r.total)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <p className="p-5 text-sm text-[#515154]">No hay pedidos en este período.</p>
+            )}
+          </section>
 
           {/* By client */}
           <section className={`${cardClass} overflow-x-auto`} aria-label="Por cliente">
@@ -329,6 +395,7 @@ export default function Reports() {
                     <th className={th}>Pedido</th>
                     <th className={th}>Fecha</th>
                     <th className={th}>Cliente</th>
+                    <th className={th}>Repartidor</th>
                     <th className={th}>Estado</th>
                     <th className={`${th} text-right`}>Productos</th>
                     <th className={`${th} text-right`}>Total</th>
@@ -342,6 +409,7 @@ export default function Reports() {
                         {new Date(g.createdAt).toLocaleString('es-UY', { dateStyle: 'short', timeStyle: 'short' })}
                       </td>
                       <td className={`${td} font-medium`}>{clientNameOf(g)}</td>
+                      <td className={td}>{nameFor(driverKeyOf(g) === 'none' ? undefined : driverKeyOf(g))}</td>
                       <td className={td}>
                         <span className={`rounded-full px-3 py-1 text-xs font-medium ${orderStatusStyles[g.status].chip}`}>
                           {orderStatusLabels[g.status]}
