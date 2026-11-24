@@ -62,9 +62,10 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
   const sidebar = (
     <div className="flex h-full flex-col">
       <div className="px-6 h-16 flex items-center justify-between shrink-0">
-        <Link href="/dashboard" aria-label="Fresco, inicio del panel" className="inline-flex items-center">
+        <Link href="/dashboard" aria-label="Del Pedregal, inicio del panel" className="inline-flex items-center">
+          {/* White version of the blue logo artwork, on the blue sidebar */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/fresco_footer_white.png" alt="Fresco" className="h-11 w-auto" />
+          <img src="/image_bottles/logo-nav.webp" alt="Del Pedregal" width={503} height={232} className="h-12 w-auto brightness-0 invert" />
         </Link>
         <button
           onClick={() => setMenuOpen(false)}
@@ -88,7 +89,7 @@ export default function DashboardShell({ children }: { children: ReactNode }) {
                 active ? 'bg-white/20 text-white' : 'text-white hover:bg-white/10'
               }`}
             >
-              <Icon className="w-4 h-4 text-yellow-300" /> {label}
+              <Icon className="w-4 h-4 text-blue-100" /> {label}
               {href === '/dashboard/pedidos' && newLeads > 0 && (
                 <span
                   className="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-yellow-300 text-black"

@@ -70,11 +70,14 @@ export default function AdminLoginPage() {
 
   return (
     <main
-      className="relative min-h-screen overflow-hidden bg-cover bg-center text-white"
-      // Tomahawk steaks on the grill (Wikimedia Commons, CC0 / public domain)
-      style={{ backgroundImage: 'url(/login-bg.webp)' }}
+      className="relative min-h-screen overflow-hidden text-white"
+      // Deep blue radial background, like the hero
+      style={{
+        backgroundColor: '#172554',
+        backgroundImage: 'radial-gradient(circle at 30% 45%, #2563eb 0%, #1d4ed8 35%, #172554 100%)',
+      }}
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#172554]/30 via-transparent to-[#172554]/60" />
       {/* Brand, top-left corner */}
       <Link
         href="/"
@@ -90,9 +93,14 @@ export default function AdminLoginPage() {
 
       {/* Wide screens held landscape: two columns (left transparent, right 50% black). Phones and portrait tablets: one column. */}
       <div className="relative min-h-screen grid grid-cols-1 md:landscape:grid-cols-2">
-        <div aria-hidden="true" className="hidden md:landscape:block" />
+        {/* Wide screens: the 20 L bottle (cut out, zoomed out) over a blurred radial glow, on the open (left) side */}
+        <div aria-hidden="true" className="relative hidden md:landscape:flex items-center justify-center p-12">
+          <div className="absolute h-[62vh] w-[62vh] rounded-full bg-[radial-gradient(circle,#93c5fd_0%,#3b82f6_40%,transparent_70%)] opacity-80 blur-3xl" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/image_bottles/bidon-20l-cut.webp" alt="" className="relative max-h-[50vh] w-auto max-w-full object-contain drop-shadow-2xl" />
+        </div>
 
-        <div className="bg-black/30 md:landscape:bg-black/50 flex items-center justify-center px-6 py-24">
+        <div className="bg-[#172554]/30 md:landscape:bg-[#172554]/50 flex items-center justify-center px-6 py-24">
           <div className="w-full max-w-sm bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-2xl">
             <p className="text-xs uppercase tracking-widest text-white/60 font-semibold mb-2">Agua Del Pedregal</p>
             <h1 className="text-2xl font-semibold tracking-tight mb-1">Iniciar sesión</h1>
