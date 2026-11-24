@@ -156,7 +156,7 @@ function PropertiesContent() {
         <div className={`${cardClass} p-10 text-center`}>
           <p className="text-sm text-[#515154]">
             {items.length === 0
-              ? 'Todavía no hay productos. Agregá el primero o empezá con los nueve productos de muestra del sitio.'
+              ? 'Todavía no hay productos. Agregá el primero o empezá con los cuatro productos de muestra del sitio.'
               : 'Ningún producto coincide con estos filtros.'}
           </p>
           {items.length === 0 && (
