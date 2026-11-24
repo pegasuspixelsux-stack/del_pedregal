@@ -150,7 +150,7 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
   return (
     <>
       {/* --- ALL PRODUCTS: 4-column grid --- */}
-      <section id="catalog" className={`py-5 md:py-6 px-3 md:px-6 max-w-[1440px] mx-auto scroll-mt-20 bg-[#ECECF1] rounded-3xl max-md:mt-3 max-md:mb-2 md:mt-4 md:mb-16 md:w-[calc(100%-3rem)]`}>
+      <section id="catalog" className={`py-5 md:py-6 px-3 md:px-6 max-w-[1440px] mx-auto scroll-mt-20 max-md:mt-3 max-md:mb-2 md:mt-4 md:mb-16 md:w-[calc(100%-3rem)]`}>
         {top && <div className="mb-6">{top}</div>}
 
         {/* Signed-in customer: greeting with their favorites and a log-out button, above the search */}
@@ -185,7 +185,7 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
           </div>
         )}
 
-        <h2 className="mb-4 max-md:text-center text-2xl md:text-3xl font-semibold tracking-tight text-[#1D1D1F]">Nuestros Productos</h2>
+        <h2 className="mb-4 max-md:text-center text-2xl md:text-3xl font-semibold tracking-tight text-[#1D1D1F] max-md:text-white">Nuestros Productos</h2>
 
         {/* Category buttons  */}
         <div className="mb-6">
@@ -328,7 +328,7 @@ export default function CatalogSection({ items: baseItems, top }: { items: HomeP
 
         {filtered.length > 0 && (
           <div className="mt-6 grid grid-cols-1 md:grid-cols-3 items-center gap-4 text-sm">
-            <p className="justify-self-center md:justify-self-end text-xs text-[#515154]">
+            <p className="justify-self-center md:justify-self-end text-xs text-[#515154] max-md:text-white/80">
               Página {currentPage} de {totalPages} · {filtered.length} productos
             </p>
           </div>

@@ -101,7 +101,7 @@ export default function FrescoHome({
         <div className="bg-[#1e3a8a] text-white text-center text-[11px] sm:text-xs font-medium tracking-wide py-1.5 px-4 sm:px-6 leading-snug">
           <span>Entregas diarias en Maldonado y Punta del Este</span>
         </div>
-        <div className="max-w-[1440px] mx-auto px-6 min-h-16 flex items-center justify-between">
+        <div className="max-w-[1440px] mx-auto px-6 pt-4 min-h-16 flex items-center justify-between">
           {/* Logo on the left (white version of the blue artwork) */}
           <Link href="/" aria-label="Del Pedregal, inicio" className="justify-self-start">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -130,7 +130,7 @@ export default function FrescoHome({
           {/* Phones: one centered column (logo, bottles, text) that fits between the top bar and the bottom nav; the bottles take
               whatever space is left, so nothing overlaps. Tablet and desktop: two columns, the text block on the left and the
               bottles on the right. */}
-          <div className="relative w-full h-full flex flex-col items-center gap-3 px-5 text-center pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[calc(8rem+env(safe-area-inset-bottom))] md:flex-row md:justify-between md:gap-10 md:px-12 lg:px-24 md:text-left md:pt-[8rem] md:pb-8">
+          <div className="relative w-full h-full flex flex-col items-center gap-3 px-5 text-center pt-[calc(5.5rem+env(safe-area-inset-top))] pb-[calc(8rem+env(safe-area-inset-bottom))] md:flex-row md:justify-between md:gap-10 md:px-12 lg:px-24 md:text-left md:pt-[9rem] md:pb-8">
             <h1 className="sr-only md:hidden">Del Pedregal Acceso Mayorista</h1>
             {/* Phones: white version of the blue logo artwork */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -141,11 +141,11 @@ export default function FrescoHome({
               <span className="inline-block w-fit rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-[0.18em] uppercase">
                 {business.heroEyebrow || 'Agua mineral natural'}
               </span>
-              <h1 className="max-w-xl text-5xl lg:text-6xl xl:text-7xl font-semibold tracking-tight leading-[1.05] text-balance">
-                {business.heroHeading || 'Agua mineral natural para comercios y gastronomía.'}
+              <h1 className="max-w-[11em] text-4xl lg:text-5xl xl:text-6xl font-semibold tracking-tight leading-[1.08] text-balance">
+                {business.heroHeading || 'La pureza del agua mineral natural, directamente en tu negocio.'}
               </h1>
               <p className="max-w-lg text-lg leading-relaxed text-white/95">
-                {business.heroText || 'Abastecimiento directo para comercios y gastronomía.'}
+                {business.heroText || 'Abastecimiento directo, continuo y sin intermediarios para restaurantes, hoteles y comercios.'}
               </p>
               <div className="flex flex-wrap items-center gap-3 pt-2">
                 <a
@@ -168,7 +168,7 @@ export default function FrescoHome({
 
             {/* Phones: supporting text below the bottles */}
             <p className="md:hidden shrink-0 max-w-[17rem] text-balance text-[15px] leading-[1.35] tracking-[-0.022em] text-white/95">
-              {business.heroText || 'Abastecimiento directo para comercios y gastronomía.'}
+              {business.heroText || 'Abastecimiento directo, continuo y sin intermediarios para restaurantes, hoteles y comercios.'}
             </p>
           </div>
         </section>

@@ -8,18 +8,18 @@ import { ArrowUpRight, Check, ChevronDown, Minus, Plus, Send } from 'lucide-reac
 const ORDER_BENEFITS: { title: string; who: string; text: string }[] = [
   {
     title: 'Reordenamiento en 1 clic',
-    who: 'Para el restaurante',
-    text: 'Cargá tus favoritos y armá tu pedido diario en segundos, con los precios de lista actualizados al día y sin empezar desde cero.',
+    who: 'Para tu negocio',
+    text: 'Guardá tus presentaciones favoritas (bidón de 20 L, botellón de 6 L, botellas de 600 ml y 1 L) y repetí tu pedido habitual en segundos, siempre con los precios actualizados.',
   },
   {
-    title: 'Cero errores operativos',
+    title: 'Cero errores en tu pedido',
     who: 'Para la logística',
-    text: 'Adiós a los audios y mensajes confusos de WhatsApp. Las órdenes entran estructuradas, con cantidades y códigos exactos, listas para armar.',
+    text: 'Adiós a los audios y mensajes confusos de WhatsApp. Tu pedido llega ordenado, con las presentaciones y cantidades exactas, listo para preparar.',
   },
   {
-    title: 'Abastecimiento ágil y seguro',
+    title: 'Abastecimiento ágil y constante',
     who: 'Beneficio mutuo',
-    text: 'Acelera el proceso de compra y preparación para garantizar entregas puntuales (same day / next day) y mantener tu cocina siempre abastecida.',
+    text: 'Agilizamos la preparación y el reparto para entregarte en el día o en 24 horas y que nunca te falte agua en tu negocio.',
   },
 ];
 
@@ -149,7 +149,7 @@ export default function InfoSections() {
   return (
     <>
       {/* --- WHO WE ARE --- */}
-      <section id="vision" className={`on-green on-green-md pt-0 ${openVision ? 'pb-14' : 'pb-0'} md:py-28 md:bg-[var(--brand-bg,#1e3a8a)] max-md:px-6 max-md:max-w-[1440px] max-md:mx-auto max-md:mt-2 max-md:py-1`}>
+      <section id="vision" className={`on-green on-green-md pt-0 ${openVision ? 'pb-14' : 'pb-0'} md:py-28 md:bg-[radial-gradient(circle_at_100%_100%,#2563eb_0%,#1d4ed8_40%,#1e3a8a_100%)] max-md:px-6 max-md:max-w-[1440px] max-md:mx-auto max-md:mt-2 max-md:py-1`}>
         <div className="md:max-w-[1440px] md:mx-auto md:px-6 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           <div className="md:space-y-6 [container-type:inline-size]">
             <h2 className="hidden md:block text-xs uppercase tracking-widest text-[#515154] font-semibold">Quiénes somos</h2>
@@ -166,12 +166,16 @@ export default function InfoSections() {
             <div id="vision-body" className={`${openVision ? 'block mt-6' : 'hidden'} md:block md:mt-0 space-y-6`}>
             {/* The heading scales with the column (cqw) and balances its lines, so it spans the same width as the paragraph below */}
             <p className="text-2xl md:text-3xl xl:text-4xl font-semibold tracking-tight leading-[1.15] [text-wrap:balance]">
-              Agua mineral natural, directo a tu puerta.
+              Una familia uruguaya, una tierra milenaria
             </p>
             <p className="text-[#515154] font-light leading-relaxed">
-              Del Pedregal es agua mineral natural sin gas, en botellas de 600 ml y 1 litro, botellones
-              de 6 litros y bidones retornables de 20 litros. Abastecemos a hogares, comercios y empresas
-              con entregas en el día o en 24 horas.
+              Somos una familia uruguaya emprendedora, unida por el amor a nuestra tierra y el deseo de compartir su
+              riqueza más pura: el agua. Así nació Del Pedregal, un proyecto que combina raíces, trabajo y propósito.
+            </p>
+            <p className="text-[#515154] font-light leading-relaxed">
+              Desde el corazón de las sierras del este de Uruguay, embotellamos agua que fluye desde una formación
+              geológica milenaria, naturalmente protegida y enriquecida por el tiempo. Cuidamos el entorno, respetamos
+              el ritmo de la naturaleza y preservamos intacta la pureza de cada gota.
             </p>
             <a
               href="#contact"
@@ -183,7 +187,7 @@ export default function InfoSections() {
             </div>
           </div>
           <div
-            className={`${openVision ? '' : 'hidden'} md:block aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-2xl bg-no-repeat bg-center bg-[#E5E5EA]`}
+            className={`${openVision ? '' : 'hidden'} md:block aspect-[4/3] md:aspect-square lg:aspect-[4/3] rounded-2xl bg-no-repeat bg-center`}
             style={{
               // The two water bottles from the hero, whole and centered
               backgroundImage: 'url(/image_bottles/Dosbidones-tapa-azul.png)',
@@ -257,12 +261,13 @@ export default function InfoSections() {
               Comprá más, pagá menos. Pedí tu acceso mayorista.
             </p>
             <p className="text-[#515154] font-light leading-relaxed mb-12">
-              Restaurantes, almacenes, hoteles y servicios de catering: solicitá tu acceso mayorista y
-              conseguí mejores precios por las cantidades que compra tu negocio. Contanos qué
-              necesitás cada semana y revisamos tu solicitud y, una vez aprobada y configurada la forma de pago, te enviamos tu contraseña de acceso para ver tus precios y hacer tus pedidos.
+              Restaurantes, hoteles, almacenes, oficinas y comercios: solicitá tu acceso mayorista y
+              conseguí mejores precios por las cantidades de agua que consume tu negocio. Contanos cuántos
+              bidones, botellones y botellas necesitás cada semana y revisamos tu solicitud. Una vez aprobada y
+              configurada la forma de pago, te enviamos tu contraseña de acceso para ver tus precios y hacer tus pedidos.
             </p>
             <div className="mt-10 pt-8 border-t border-[#000000]/10">
-              <h3 className="text-lg font-semibold tracking-tight mb-5">Por qué usar el sistema de pedidos de Fresco</h3>
+              <h3 className="text-lg font-semibold tracking-tight mb-5">Por qué pedir tu agua con Del Pedregal</h3>
               <ul className="space-y-5">
                 {ORDER_BENEFITS.map((b) => (
                   <li key={b.title} className="flex gap-3.5">
@@ -314,12 +319,12 @@ export default function InfoSections() {
                 </div>
                 <div>
                   <label htmlFor="w-volume" className="block text-xs uppercase tracking-wider font-semibold text-[#515154] mb-2">Volumen semanal</label>
-                  <input id="w-volume" type="text" value={wholesale.volume} onChange={(e) => setWholesale({ ...wholesale, volume: e.target.value })} placeholder="ej. 200 lb de tomates" className="w-full bg-[#FBFBFD] border border-[#000000]/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1D1D1F] transition-colors" />
+                  <input id="w-volume" type="text" value={wholesale.volume} onChange={(e) => setWholesale({ ...wholesale, volume: e.target.value })} placeholder="ej. 40 bidones de 20 L" className="w-full bg-[#FBFBFD] border border-[#000000]/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1D1D1F] transition-colors" />
                 </div>
               </div>
               <div>
                 <label htmlFor="w-message" className="block text-xs uppercase tracking-wider font-semibold text-[#515154] mb-2">¿Qué necesitás? (opcional)</label>
-                <textarea id="w-message" rows={3} value={wholesale.message} onChange={(e) => setWholesale({ ...wholesale, message: e.target.value })} placeholder="Productos, días de entrega, cualquier cosa que debamos saber…" className="w-full bg-[#FBFBFD] border border-[#000000]/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1D1D1F] transition-colors resize-none" />
+                <textarea id="w-message" rows={3} value={wholesale.message} onChange={(e) => setWholesale({ ...wholesale, message: e.target.value })} placeholder="Presentaciones, días de entrega, cualquier cosa que debamos saber…" className="w-full bg-[#FBFBFD] border border-[#000000]/10 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-[#1D1D1F] transition-colors resize-none" />
               </div>
               <button
                 type="submit"
